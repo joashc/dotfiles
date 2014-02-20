@@ -23,6 +23,9 @@ bindsym $mod+Shift+n scratchpad show
 for_window [class="Chromium"] border none
 for_window [class="URxvt"] border none
 
+# Default to 1 pixel border
+new_window 1pixel
+
 # class                 border  backgr. text    indicator
 client.focused          #4c7899 #285577 #ffffff #2e9ef4
 client.focused_inactive #333333 #5f676a #ffffff #484e50

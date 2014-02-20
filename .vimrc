@@ -1,4 +1,5 @@
 set nocompatible
+set shell=/bin/bash
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
@@ -37,6 +38,9 @@ let g:lightline = {
 " Bind easymotion to single leaderkey
 map <Leader> <Plug>(easymotion-prefix)
 
+" Toggle nerdtree
+nnoremap <C-e> :NERDTreeToggle<CR>
+
 set smartcase
 set hlsearch
 set incsearch
@@ -70,7 +74,7 @@ set list
 nnoremap <silent> n   n:call HLNext(0.1)<cr>
 nnoremap <silent> N   N:call HLNext(0.1)<cr>
 highlight WhiteOnRed ctermbg=red ctermfg=white
-" highlight the match in red (Damian Conway)
+" highlight the match in red
 function! HLNext (blinktime)
     let [bufnum, lnum, col, off] = getpos('.')
     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))

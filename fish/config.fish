@@ -18,6 +18,9 @@ end
 function ipext
     curl http://ipecho.net/plain ; echo
 end
+function lt
+    ls -ltr
+end
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
@@ -30,3 +33,4 @@ set fish_plugins autojump vi-mode
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
+sh ~/.fehbg &

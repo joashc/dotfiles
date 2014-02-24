@@ -33,7 +33,7 @@ let g:lightline = {
       \   'readonly': '%{&readonly?"":""}',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '|' }
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 " Bind easymotion to single leaderkey
 map <Leader> <Plug>(easymotion-prefix)

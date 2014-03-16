@@ -12,7 +12,7 @@ set $mod Mod1
 
 # Toggles for changing border mode
 bindsym $mod+t border normal
-bindsym $mod+y border 1pixel
+bindsym $mod+r border 1pixel
 bindsym $mod+u border none
 
 # Scratchpad bindings
@@ -24,7 +24,7 @@ for_window [class="Chromium"] border none
 for_window [class="URxvt"] border none
 
 # Default to 1 pixel border
-new_window 1pixel
+new_window none
 
 # class                 border  backgr. text    indicator
 client.focused          #4c7899 #285577 #ffffff #2e9ef4
@@ -43,6 +43,8 @@ font pango:Inconsolata 10px
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
+
+focus_follows_mouse no
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -172,7 +174,6 @@ bindsym $mod+Control+j resize grow height 1 px
 bindsym $mod+Control+k resize shrink height 1 px
 bindsym $mod+Control+l resize grow width 1 px
 
-bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

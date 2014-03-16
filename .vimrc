@@ -8,6 +8,7 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'https://github.com/Lokaltog/vim-easymotion'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'vim-scripts/YankRing.vim'
 
 set showcmd
 let mapleader=","

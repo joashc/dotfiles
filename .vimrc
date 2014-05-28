@@ -1,6 +1,8 @@
 set nocompatible
 set shell=/bin/bash
 filetype off
+
+" Vundle needs bash to work
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -9,6 +11,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'https://github.com/Lokaltog/vim-easymotion'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'goldfeld/vim-seek'
+Bundle 'kien/ctrlp.vim'
+
+" Bind save to control s
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+:imap <c-s> <Esc><c-s>
 
 set showcmd
 let mapleader=","
@@ -36,11 +45,18 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
 " Bind easymotion to single leaderkey
 map <Leader> <Plug>(easymotion-prefix)
 
 " Toggle nerdtree
 nnoremap <C-e> :NERDTreeToggle<CR>
+
+" Bind vimseek to s
+let g:seek_subst_disable = 1
+
+" Bind control p to T
+let g:ctrlp_map = '<s-t>'
 
 set smartcase
 set hlsearch
@@ -65,8 +81,8 @@ map <c-space> ?
 set relativenumber
 
 " Highlights 81st char of each line
-highlight ColorColumn ctermbg=blue
-call matchadd('ColorColumn', '\%81v', 100)
+"highlight ColorColumn ctermbg=blue
+"call matchadd('ColorColumn', '\%81v', 100)
 
 " Show bad whitespace
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -98,5 +114,3 @@ if has('persistent_undo')
     set undofile
 endif
 
-" Make BS/DEL work as expected in visual modes (i.e. delete the selected text)...
-vmap <BS> x

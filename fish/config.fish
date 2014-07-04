@@ -21,6 +21,9 @@ end
 function lt
     ls -ltr
 end
+function f
+    find . -iname $argv
+end
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
@@ -33,4 +36,12 @@ set fish_plugins autojump vi-mode
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
-sh ~/.fehbg &
+
+# start X at login
+if status --is-login
+    if test -z "$DISPLAY" -a $XDG_VTNR = 1
+        exec startx
+    end
+end
+
+sh ./xcape &

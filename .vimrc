@@ -13,6 +13,9 @@ Bundle 'vim-scripts/YankRing.vim'
 Bundle 'goldfeld/vim-seek'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'dag/vim2hs'
 
 " Vim-Latex
 filetype plugin indent on
@@ -76,7 +79,6 @@ set incsearch
 set noshowmode
 set showmatch
 
-
 set expandtab
 set ai "Auto indent
 set si "Smart indent
@@ -135,3 +137,5 @@ if has('persistent_undo')
     set undofile
 endif
 
+let g:necoghc_enable_detailed_browse = 1
+let g:neocomplete#enable_at_startup = 1

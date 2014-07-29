@@ -1,4 +1,4 @@
-URxvt*font:xft:Meslo LG M for Powerline:style=Medium:pixelsize=13:hinting=true,xft:dejavu sans mono:pixelsize=18
+URxvt*font:xft:Meslo LG M for Powerline:style=Medium:pixelsize=11:hinting=true,xft:dejavu sans mono:pixelsize=18
 URxvt.scrollBar:false
 ! Solarized color scheme for the X Window System
 ! !

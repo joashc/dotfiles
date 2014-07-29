@@ -3,12 +3,11 @@ set fish_path $HOME/.oh-my-fish
 set -x LANG en_AU.UTF-8
 set -x LC_ALL en_AU.UTF-8
 set -x LC_CTYPE en_AU.UTF-8
+
+set fish_greeting " "
+
 # Theme
 set fish_theme agnoster
-function fish_greeting
-    fortune rationality
-end
-funcsave fish_greeting
 function lso
     pacman -Qdt
 end

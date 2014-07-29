@@ -181,7 +181,7 @@ bar {
     status_command i3status
     mode hide
     binding_mode_indicator yes
-    font pango:Inconsolata 15
+    font pango:Meslo LG M for Powerline 9
     colors {
         statusline #8dacb8
     }

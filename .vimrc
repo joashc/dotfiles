@@ -1,21 +1,23 @@
 set nocompatible
 set shell=/bin/bash
 
-" Vundle needs bash to work
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'itchyny/lightline.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'https://github.com/Lokaltog/vim-easymotion'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'goldfeld/vim-seek'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'dag/vim2hs'
+call plug#begin('~/.vim/plugged')
+
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'https://github.com/Lokaltog/vim-easymotion'
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'vim-scripts/YankRing.vim'
+Plug 'goldfeld/vim-seek'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'Shougo/neocomplete.vim'
+Plug 'dag/vim2hs', { 'for': 'haskell' }
+
+call plug#end()
 
 " Vim-Latex
 filetype plugin indent on
@@ -42,10 +44,6 @@ inoremap kk <Esc>
 set magic
 set noswapfile
 syntax enable
-try
-    colorscheme mustang
-catch
-endtry
 set background=dark
 set ignorecase
 let g:clipbrdDefaultReg = '+'
@@ -93,9 +91,6 @@ set tabstop=4
 map <s-space> ?
 map <c-space> ?
 set number
-" Highlights 81st char of each line
-"highlight ColorColumn ctermbg=blue
-"call matchadd('ColorColumn', '\%81v', 100)
 
 " Show bad whitespace
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -136,6 +131,8 @@ if has('persistent_undo')
     set undolevels=5000
     set undofile
 endif
+
+hi SpellBad ctermfg=253 ctermbg=8
 
 let g:necoghc_enable_detailed_browse = 1
 let g:neocomplete#enable_at_startup = 1

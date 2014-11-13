@@ -15,7 +15,8 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Shougo/neocomplete.vim'
-Plug 'dag/vim2hs', { 'for': 'haskell' }
+Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+Plug 'travitch/hasksyn', { 'for': 'haskell' }
 
 call plug#end()
 

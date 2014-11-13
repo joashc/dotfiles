@@ -1,8 +1,8 @@
 # Path to your oh-my-fish.
 set fish_path $HOME/.oh-my-fish
-set -x LANG en_AU.UTF-8
-set -x LC_ALL en_AU.UTF-8
-set -x LC_CTYPE en_AU.UTF-8
+set -gx LANG en_AU.UTF-8
+set -gx LC_ALL en_AU.UTF-8
+set -gx LC_CTYPE en_AU.UTF-8
 
 set fish_greeting " "
 

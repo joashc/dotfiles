@@ -52,4 +52,5 @@ fi
 xmodmap ~/.speedswapper
 xcape
 export LANG=en_AU.UTF-8
-exec i3
+exec herbstluftwm --locked
+exec xcompmgr -c

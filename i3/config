@@ -33,7 +33,7 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
 
 # Press the workspace shortcut again to go back to the window you were just on
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode

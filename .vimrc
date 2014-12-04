@@ -42,13 +42,13 @@ set foldcolumn=0
 set autoread
 inoremap jj <Esc>
 inoremap kk <Esc>
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 set magic
 set noswapfile
 syntax enable
 set background=dark
 set ignorecase
 let g:clipbrdDefaultReg = '+'
-set clipboard=unnamedplus
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'component': {
@@ -125,6 +125,7 @@ nnoremap <silent> <C-h> :<C-u>call ToggleErrors()<CR>
 
 " Delete in normal mode to switch off highlighting till next search
 nnoremap <silent> <BS> :nohlsearch <cr>
+
 
 " Persistent undo
 if has('persistent_undo')

@@ -4,6 +4,10 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
+Plug 'lukerandall/haskellmode-vim'
+Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+Plug 'travitch/hasksyn', { 'for': 'haskell' }
+Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'https://github.com/Lokaltog/vim-easymotion'
@@ -15,7 +19,6 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Shougo/neocomplete.vim'
-Plug 'dag/vim2hs', { 'for': 'haskell' }
 
 call plug#end()
 
@@ -44,6 +47,10 @@ inoremap kk <Esc>
 set magic
 set noswapfile
 syntax enable
+try
+    colorscheme mustang
+catch
+endtry
 set background=dark
 set ignorecase
 let g:clipbrdDefaultReg = '+'
@@ -69,7 +76,7 @@ let g:seek_subst_disable = 1
 " Bind control p to T
 let g:ctrlp_map = '<s-t>'
 
-" Toggles syntastic error window
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>" 
 
 set smartcase
 set hlsearch

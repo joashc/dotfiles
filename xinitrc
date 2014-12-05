@@ -52,4 +52,6 @@ fi
 xmodmap ~/.speedswapper
 xcape
 export LANG=en_AU.UTF-8
+export EDITOR=vim
+export GOPATH=~/go/gopath
 exec i3

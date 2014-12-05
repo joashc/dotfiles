@@ -23,7 +23,22 @@ end
 function f
     find . -iname $argv
 end
+function windows
+    VBoxManage startvm Windows
+end
+function co
+    git checkout
+end
+function s
+    git status -s
+end
+function l
+    git lg
+end
 
+function activate
+    sudo modprobe vboxdrv
+end
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
 # Custom plugins may be added to ~/.oh-my-fish/custom/plugins/

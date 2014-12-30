@@ -1,5 +1,6 @@
 URxvt*font:xft:Meslo LG M for Powerline:style=Medium:pixelsize=11:hinting=true,xft:dejavu sans mono:pixelsize=18
 URxvt.scrollBar:false
+URxvt.depth:32
 ! Solarized color scheme for the X Window System
 ! !
 ! ! http://ethanschoonover.com/solarized
@@ -47,12 +48,12 @@ URxvt.scrollBar:false
 ! !
 ! ! URxvt*background:            S_base03
 !
- *fading:                  40
+ *fading:                  0
  *fadeColor:               S_base03
  *cursorColor:             S_base1
  *pointerColorBackground:  S_base01
  *pointerColorForeground:  S_base1
- *background:S_base03
+ *background:[98]#1e1e1e
  *foreground:S_basemod
  *color0:#000000
  *color1:#ff6565

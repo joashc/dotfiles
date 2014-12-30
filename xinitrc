@@ -49,14 +49,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	done
 	unset f
 fi
-xmodmap ~/.speedswapper
-xcape
 export LANG=en_AU.UTF-8
-<<<<<<< HEAD
 export EDITOR=vim
 export GOPATH=~/go/gopath
+compton -b
+feh ~/downloads/foxy.jpg --bg-fill
+xmodmap ~/.speedswapper
+xcape
 exec i3
-=======
-exec herbstluftwm --locked
-exec xcompmgr -c
->>>>>>> b47eccce24eb85bc8b72f6f2f1672102bb944e4a

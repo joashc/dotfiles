@@ -5,8 +5,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
 Plug 'lukerandall/haskellmode-vim'
-Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
-Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -19,6 +17,8 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Shougo/neocomplete.vim'
+Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+Plug 'travitch/hasksyn', { 'for': 'haskell' }
 
 call plug#end()
 

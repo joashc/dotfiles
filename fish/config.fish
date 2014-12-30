@@ -51,11 +51,12 @@ set fish_plugins autojump vi-mode
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
 
+sh ./xcape &
+
 # start X at login
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR = 1
-        exec startx
+        #exec startx
     end
 end
 
-sh ./xcape &

@@ -52,6 +52,11 @@ fi
 xmodmap ~/.speedswapper
 xcape
 export LANG=en_AU.UTF-8
+<<<<<<< HEAD
 export EDITOR=vim
 export GOPATH=~/go/gopath
 exec i3
+=======
+exec herbstluftwm --locked
+exec xcompmgr -c
+>>>>>>> b47eccce24eb85bc8b72f6f2f1672102bb944e4a

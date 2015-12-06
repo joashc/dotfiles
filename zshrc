@@ -52,8 +52,6 @@ alias rs='git reset $*'
 alias RSH='git reset --hard $*'
 alias com='git commit $*'
 alias con='git rebase --continue $*'
-
-
-
+alias amend='git commit --amend $*'
 
 

@@ -4,13 +4,18 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'flowtype/vim-flow'
+Plug 'junegunn/goyo.vim'
 Plug 'lukerandall/haskellmode-vim'
 Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'jaxbot/syntastic-react', { 'for': 'javascript' }
 Plug 'vim-scripts/YankRing.vim'
+Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'goldfeld/vim-seek'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
@@ -21,6 +26,11 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 
 call plug#end()
+
+let g:flow#autoclose = 1
+
+let g:jsx_ext_required = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Vim-Latex
 filetype plugin indent on
@@ -92,8 +102,8 @@ map j gj
 map k gk
 set smarttab
 set wrap
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 map <s-space> ?
 map <c-space> ?

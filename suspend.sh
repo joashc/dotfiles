@@ -4,8 +4,9 @@ initial_idle=$(xprintidle | bc)
 
 echo "Initial idle:"
 echo "$initial_idle"
-# Dim the screen if there's been no X activity for more than 3 minutes
-if [ "$initial_idle" -gt 180000 ]; then
+
+# Dim the screen if there's been no X activity for more than 2 minutes and there's no sound playing
+if [ "$initial_idle" -gt 120000 ] && [ $(grep -r "RUNNING" /proc/asound | wc -l) -eq 0 ]; then
   echo "Dimming screen"
   xcalib -co 60 -a
 

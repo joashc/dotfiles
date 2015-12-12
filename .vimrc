@@ -85,6 +85,7 @@ let g:seek_subst_disable = 1
 
 " Bind control p to T
 let g:ctrlp_map = '<s-t>'
+set wildignore+=*/node_modules/*
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>" 
 

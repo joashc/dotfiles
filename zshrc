@@ -13,8 +13,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle vi-mode
 antigen bundle fancy-ctrl-z
 antigen bundle last-working-dir
-antigen bundle tarruda/zsh-autosuggestions
 antigen bundle arzzen/calc.plugin.zsh
+antigen bundle tarruda/zsh-autosuggestions
+antigen bundle per-directory-history
+
 
 zle-line-init() {
   zle autosuggest-start
@@ -54,4 +56,5 @@ alias com='git commit $*'
 alias con='git rebase --continue $*'
 alias amend='git commit --amend $*'
 
-
+stty stop undef
+stty start undef

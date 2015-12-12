@@ -1,9 +1,12 @@
-sleep 3
-# Check idle time
+# Need to export the display environment variable, cron env doesn't have it
+export DISPLAY=:0
 initial_idle=$(xprintidle | bc)
 
+echo "Initial idle:"
+echo "$initial_idle"
 # Dim the screen if there's been no X activity for more than 3 minutes
-if [ "$initial_idle" -gt 18000 ]; then
+if [ "$initial_idle" -gt 180000 ]; then
+  echo "Dimming screen"
   xcalib -co 60 -a
 
   idle=$(xprintidle | bc)
@@ -15,6 +18,7 @@ if [ "$initial_idle" -gt 18000 ]; then
     # Suspend 20 seconds after screen dims
     if [ "$idle" -gt $(($initial_idle + 20000)) ];
     then
+      echo "Suspending"
       systemctl suspend
     fi
     sleep 0.1

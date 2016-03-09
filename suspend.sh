@@ -1,12 +1,12 @@
-# Need to export the display environment variable, cron env doesn't have it
-export DISPLAY=:0
+#!/bin/zsh
+
 initial_idle=$(xprintidle | bc)
 
 echo "Initial idle:"
 echo "$initial_idle"
 
 # Dim the screen if there's been no X activity for more than 2 minutes and there's no sound playing
-if [ "$initial_idle" -gt 120000 ] && [ $(grep -r "RUNNING" /proc/asound | wc -l) -eq 0 ]; then
+if [ "$initial_idle" -gt 120000 ] && [ $(grep -r "RUNNING" /proc/asound | wc -l | bc) -eq 0 ]; then
   echo "Dimming screen"
   xcalib -co 60 -a
 
@@ -21,6 +21,7 @@ if [ "$initial_idle" -gt 120000 ] && [ $(grep -r "RUNNING" /proc/asound | wc -l)
     then
       echo "Suspending"
       systemctl suspend
+      break
     fi
     sleep 0.1
   done

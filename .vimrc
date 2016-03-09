@@ -5,9 +5,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'flowtype/vim-flow'
+Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+Plug 'Shougo/vimproc.vim'
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'junegunn/goyo.vim'
-Plug 'lukerandall/haskellmode-vim'
 Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -15,14 +17,12 @@ Plug 'https://github.com/Lokaltog/vim-easymotion'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'jaxbot/syntastic-react', { 'for': 'javascript' }
 Plug 'vim-scripts/YankRing.vim'
-Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'goldfeld/vim-seek'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Shougo/neocomplete.vim'
-Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 
 call plug#end()
@@ -59,12 +59,15 @@ set magic
 set noswapfile
 syntax enable
 try
-    colorscheme mustang
+    colorscheme ryuuko
 catch
 endtry
 set background=dark
 set ignorecase
+
 let g:clipbrdDefaultReg = '+'
+set clipboard=unnamedplus
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'component': {
@@ -129,6 +132,7 @@ function! HLNext (blinktime)
     redraw
 endfunction
 
+
 function! ToggleErrors()
     let old_last_winnr = winnr('$')
     lclose
@@ -143,6 +147,8 @@ nnoremap <silent> <C-h> :<C-u>call ToggleErrors()<CR>
 " Delete in normal mode to switch off highlighting till next search
 nnoremap <silent> <BS> :nohlsearch <cr>
 
+set guifont=Meslo\ LG\ M\ for\ Powerline:h18
+
 
 " Persistent undo
 if has('persistent_undo')
@@ -155,3 +161,14 @@ hi SpellBad ctermfg=253 ctermbg=8
 
 let g:necoghc_enable_detailed_browse = 1
 let g:neocomplete#enable_at_startup = 1
+
+set go-=M
+set go-=m
+set go-=T
+set go-=r
+set go-=L
+set go-=f
+set go-=F
+set go-=b
+
+let hscoptions="𝐒𝐓𝐄𝐌B"

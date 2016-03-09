@@ -1,74 +1,55 @@
-URxvt*font:xft:Meslo LG M for Powerline:style=Light:pixelsize=13:hinting=true
+URxvt*font:xft:Meslo LG M for Powerline:style=Light:pixelsize=15:hinting=true,xft:dejavu sans mono:pixelsize=18
 URxvt.scrollBar:false
+
+! Enables copy/paste with Ctrl-Shift-C/V
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! Size of cursor
+Xcursor.size: 32
 URxvt.depth:32
-! Solarized color scheme for the X Window System
-! !
-! ! http://ethanschoonover.com/solarized
-!
-!
-! ! Common
-!
- #define S_yellow        #b58900
- #define S_orange        #cb4b16
- #define S_red           #dc322f
- #define S_magenta       #d33682
- #define S_violet        #6c71c4
- #define S_blue          #268bd2
- #define S_cyan          #2aa198
- #define S_green         #859900
-!
-!
-! ! Dark
-!
- #define S_base03        #1e1e1e
- #define S_base02        #073642
- #define S_base01        #586e75
- #define S_base00        #657b83
- #define S_basemod       #8dacb8
- #define S_base0         #AEB2B3
- #define S_base1         #93a1a1
- #define S_base2         #eee8d5
- #define S_base3         #fdf6e3
-!
-!
-! ! Light
-!
-!#define S_base03        #fdf6e3
-!#define S_base02        #eee8d5
-!#define S_base01        #93a1a1
-!#define S_base00        #839496
-!#define S_base0         #657b83
-!#define S_base1         #586e75
-!#define S_base2         #073642
-!#define S_base3         #002b36
 
-!
-! ! To only apply colors to your terminal, for example, prefix
-! ! the color assignment statement with its name. Example:
-! !
-! ! URxvt*background:            S_base03
-!
- *fading:                  0
- *fadeColor:               S_base03
- *cursorColor:             S_base1
- *pointerColorBackground:  S_base01
- *pointerColorForeground:  S_base1
- *background:#1e1e1e
- *foreground:S_basemod
- *color0:#000000
- *color1:#ff6565
- *color2:#93d44f
- *color3:#eab93d
- *color4:#204a87
- *color5:#ce5c00
- *color6:#89b6e2
- *color7:#cccccc
- *color8:#555753
- *color9:#ff8d8d
- *color10:#c8e7a8
- *color11:#ffc123
- *color12:#3465a4
- *color13:#f57900
- *color14:#46a4ff
- *color15:#ffffff
+! Colors {{{
 
+! special
+*.foreground:   #f0f0f0
+*.background:   #394952
+*.cursorColor:  #f0f0f0
+
+! black
+! Second black is grey
+*.color0:       #394952
+*.color8:       #70838c
+
+! red
+*.color1:       #99736e
+*.color9:       #99736e
+
+! green
+*.color2:       #78a090
+*.color10:      #78a090
+
+! yellow
+*.color3:       #bfb7a1
+*.color11:      #bfb7a1
+
+! blue
+*.color4:       #7c9fa6
+*.color12:      #7c9fa6
+
+! magenta
+*.color5:       #BF9C86
+*.color13:      #BF9C86
+
+! cyan
+*.color6:       #99BFBA
+*.color14:      #99BFBA
+
+! white
+*.color7:       #f0f0f0
+*.color15:      #f0f0f0
+
+! }}}

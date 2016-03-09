@@ -1,9 +1,10 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=100000
-SAVEHIST=100000
+SAVEHIS=T100000
 
 source ~/antigen.zsh
+export PATH="/home/boo/.cabal/bin:$PATH"
 
 antigen use oh-my-zsh
 
@@ -11,7 +12,6 @@ antigen bundle git
 antigen bundle z
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle vi-mode
-antigen bundle fancy-ctrl-z
 antigen bundle last-working-dir
 antigen bundle arzzen/calc.plugin.zsh
 antigen bundle tarruda/zsh-autosuggestions
@@ -55,6 +55,9 @@ alias RSH='git reset --hard $*'
 alias com='git commit $*'
 alias con='git rebase --continue $*'
 alias amend='git commit --amend $*'
+alias p='git push $*'
+alias pl='git pull $*'
+alias a='git add $*'
 
 stty stop undef
 stty start undef

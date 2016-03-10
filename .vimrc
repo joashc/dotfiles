@@ -171,4 +171,5 @@ set go-=f
 set go-=F
 set go-=b
 
-let hscoptions="𝐒𝐓𝐄𝐌B"
+let hscoptions="t𝐒𝐓𝐄𝐌B"
+set concealcursor=nciv

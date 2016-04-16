@@ -1,9 +1,12 @@
 set nocompatible
 set shell=/bin/bash
+set mouse=a
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'mhinz/vim-startify'
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 Plug 'Shougo/vimproc.vim'
@@ -161,6 +164,7 @@ hi SpellBad ctermfg=253 ctermbg=8
 
 let g:necoghc_enable_detailed_browse = 1
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
 
 set go-=M
 set go-=m
@@ -171,5 +175,4 @@ set go-=f
 set go-=F
 set go-=b
 
-let hscoptions="t𝐒𝐓𝐄𝐌B"
-set concealcursor=nciv
+let hscoptions="t𝐒𝐓𝐄𝐌B𝔻"

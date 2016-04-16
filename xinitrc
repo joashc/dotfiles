@@ -53,10 +53,9 @@ export LANG=en_AU.UTF-8
 export EDITOR=vim
 export GOPATH=~/go/gopath
 compton -b
-feh ~/Desktop/wall.png --bg-fill
+feh ~/wall.jpg --bg-fill
 xmodmap ~/.speedswapper
 xset s off -dpms
 xcape
-emacs --daemon
 exec i3
 #exec openbox-session

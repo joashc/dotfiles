@@ -2,6 +2,7 @@ set -gx LANG en_AU.UTF-8
 set -gx LC_ALL en_AU.UTF-8
 set -gx LC_CTYPE en_AU.UTF-8
 set -g Z_SCRIPT_PATH /usr/lib/z.sh
+set -gx PATH /home/boo/.local/bin $PATH
 
 
 # Path to Oh My Fish install.
@@ -107,8 +108,23 @@ function win
   VBoxManage startvm Windows10
 end
 
+function cherry
+  git cherry-pick $argv
+end
+
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
         exec startx -- -keeptty
     end
+end
+
+function chpwd --on-variable PWD
+  status --is-command-substitution; and return
+  ls
+end
+function caf
+  cp ~/dotfiles/.nosus ~/dotfiles/suspend.sh
+end
+function coff
+  cp ~/dotfiles/.sus ~/dotfiles/suspend.sh
 end

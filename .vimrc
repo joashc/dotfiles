@@ -5,6 +5,7 @@ set mouse=a
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
+Plug 'glittershark/vim-hare'
 Plug 'tpope/vim-dispatch'
 Plug 'mhinz/vim-startify'
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
@@ -20,7 +21,7 @@ Plug 'https://github.com/Lokaltog/vim-easymotion'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'jaxbot/syntastic-react', { 'for': 'javascript' }
 Plug 'vim-scripts/YankRing.vim'
-Plug 'goldfeld/vim-seek'
+Plug 'justinmk/vim-sneak'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -176,3 +177,6 @@ set go-=F
 set go-=b
 
 let hscoptions="t𝐒𝐓𝐄𝐌B𝔻"
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc

@@ -1,15 +1,23 @@
-URxvt*font:xft:Meslo LG M for Powerline:style=Light:pixelsize=15:hinting=true,xft:dejavu sans mono:pixelsize=18
+URxvt*font:xft:Sauce Code Powerline:style=Light:pixelsize=28:hinting=true,xft:dejavu sans mono:pixelsize=18
 URxvt.scrollBar:false
 
 ! Enables copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.perl-ext-common: default,clipboard
+URxvt.perl-ext-common: default,clipboard,font-size
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.font-size.step: 2
 
 ! Size of cursor
 Xcursor.size: 32
+Xft.dpi: 120
+
+
 URxvt.depth:32
 
 ! Colors {{{

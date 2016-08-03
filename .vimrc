@@ -8,9 +8,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'glittershark/vim-hare'
 Plug 'tpope/vim-dispatch'
 Plug 'mhinz/vim-startify'
+Plug 'jceb/vim-orgmode', { 'for': 'org' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'flowtype/vim-flow', { 'for': 'javascript' }
-Plug 'Shougo/vimproc.vim'
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'junegunn/goyo.vim'

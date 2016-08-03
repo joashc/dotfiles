@@ -20,7 +20,7 @@ echo "$initial_idle"
       if [ "$idle" -gt $(($initial_idle + 20000)) ];
       then
         echo "Suspending"
-        systemctl suspend
+        sudo systemctl suspend
         break
       fi
       sleep 0.1

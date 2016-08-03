@@ -52,9 +52,18 @@ fi
 export LANG=en_AU.UTF-8
 export EDITOR=vim
 export GOPATH=~/go/gopath
+export PATH=/usr/local/bin:/usr/bin
 compton -b
+xbindkeys
 feh ~/wall.jpg --bg-fill
-xmodmap ~/.speedswapper
+#xmodmap ~/.speedswapper
+
+# make CapsLock behave like Ctrl:
+setxkbmap -option ctrl:nocaps
+# make short-pressed Ctrl behave like Escape:
+xcape -e 'Control_L=Escape'
+
+xrandr --dpi 220
 xset s off -dpms
 xcape
 exec i3

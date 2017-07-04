@@ -2,7 +2,9 @@ set -gx LANG en_AU.UTF-8
 set -gx LC_ALL en_AU.UTF-8
 set -gx LC_CTYPE en_AU.UTF-8
 set -g Z_SCRIPT_PATH /usr/lib/z.sh
-
+set -gx PATH /home/boo/.local/bin $PATH
+set -gx PATH /home/boo/.local/bin $PATH
+set -gx PATH /home/boo/go/gopath/bin $PATH
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"
@@ -148,6 +150,44 @@ function batticon
   end
 end
 
+function dl
+  git diff HEAD^ HEAD
+end
+
+function wf
+  sudo wifi-menu
+end
+
+function vpn
+  sudo openvpn --config ~/joashnew.ovpn
+end
+
 function fish_greeting
 end
+
+
+function dev
+  kubectl config use-context kube-dev.getswift.co
+end
+
+function prod
+  kubectl config use-context kube.getswift.co
+end
+
+function kafprod
+  kubectl config use-context kafka
+end
+
+function mon
+  sh -c 'xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x384 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP1-2 --off --output DP1-3 --mode 1920x1080 --pos 3840x0 --rotate normal --output DP2 --off'
+end
+
+function spig
+  kubectl port-forward (kubectl get pods --namespace spinnaker | grep spin-gate | awk '{print $1}') 8084 --namespace spinnaker
+end
+
+function spid
+  kubectl port-forward (kubectl get pods --namespace spinnaker | grep spin-deck | awk '{print $1}') 9000 --namespace spinnaker 
+end
+
 

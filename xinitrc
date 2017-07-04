@@ -1,9 +1,7 @@
 #!/bin/sh
 
 userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
 xset +fp /usr/share/fonts/OTF
 
 # merge in defaults and keymaps
@@ -55,16 +53,20 @@ export GOPATH=~/go/gopath
 export PATH=/usr/local/bin:/usr/bin
 compton -b
 xbindkeys
+
+sh -c 'xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x384 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP1-2 --off --output DP1-3 --mode 1920x1080 --pos 3840x0 --rotate normal --output DP2 --off'
+
 feh ~/wall.jpg --bg-fill
 #xmodmap ~/.speedswapper
 
 # make CapsLock behave like Ctrl:
-setxkbmap -option ctrl:nocaps
-# make short-pressed Ctrl behave like Escape:
-xcape -e 'Control_L=Escape'
+setxkbmap -option caps:escape
 
-xrandr --dpi 220
+# urxvt daemon
+urxvtd -q -f -o
+
 xset s off -dpms
 xcape
+libinput-gestures-setup start
 exec i3
 #exec openbox-session

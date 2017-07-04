@@ -11,6 +11,7 @@
 
 # Start xautolock
 exec --no-startup-id  ~/dotfiles/suspend.sh
+exec --no-startup-id unclutter -grab
 set $mod Mod1
 
 # Toggles for changing border mode
@@ -50,14 +51,14 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return split v;exec urxvt
-bindsym $mod+Return split h;exec urxvt
+bindsym $mod+Shift+Return split v;exec termite
+bindsym $mod+Return split h;exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -font "Sauce Code Powerline 24" -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -padding 70 -separator-style none -opacity 80 --no-levenshtein-sort
+bindsym $mod+d exec rofi -show run -font "Operator Mono Light 16" -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -padding 70 -separator-style none -opacity 80 --no-levenshtein-sort
 bindsym $mod+Shift+d exec rofi -show window
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -69,12 +70,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -168,17 +163,17 @@ mode "resize" {
         bindsym Caps_Lock mode "default"
 }
 
-bindsym $mod+Control+h resize shrink width 5 px
-bindsym $mod+Control+j resize grow height 5 px
-bindsym $mod+Control+k resize shrink height 5 px
-bindsym $mod+Control+l resize grow width 5 px
+bindsym $mod+Control+h resize shrink width 15 px
+bindsym $mod+Control+j resize grow height 15 px
+bindsym $mod+Control+k resize shrink height 15 px
+bindsym $mod+Control+l resize grow width 15 px
 
-gaps inner 20
+gaps inner 10
 
 bar {
   status_command conky -c ~/.config/conky/conky.conf
   mode dock
-  font pango:Roboto 7
+  font pango:Roboto 10
   position top
   strip_workspace_numbers yes
   colors {

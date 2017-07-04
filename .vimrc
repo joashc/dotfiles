@@ -1,28 +1,35 @@
 set nocompatible
 set shell=/bin/bash
 set mouse=a
+set ttymouse=xterm2
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'felixhummel/setcolors.vim'
+Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'glittershark/vim-hare'
 Plug 'tpope/vim-dispatch'
 Plug 'mhinz/vim-startify'
 Plug 'jceb/vim-orgmode', { 'for': 'org' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'flowtype/vim-flow', { 'for': 'javascript.jsx' }
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'Raimondi/delimitMate'
 Plug 'junegunn/goyo.vim'
 Plug 'https://github.com/godlygeek/tabular.git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'jaxbot/syntastic-react', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript.jsx' }
+Plug 'jaxbot/syntastic-react', { 'for': 'javascript.jsx' }
 Plug 'vim-scripts/YankRing.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'kien/ctrlp.vim'
+Plug 'mhinz/vim-signify'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Shougo/neocomplete.vim'
@@ -35,6 +42,7 @@ let g:flow#autoclose = 1
 
 let g:jsx_ext_required = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tslint', 'tsc']
 
 " Vim-Latex
 filetype plugin indent on
@@ -63,22 +71,22 @@ set magic
 set noswapfile
 syntax enable
 try
-    colorscheme ryuuko
+    colorscheme candycode
 catch
 endtry
 set background=dark
 set ignorecase
 
 let g:clipbrdDefaultReg = '+'
-set clipboard=unnamedplus
+set clipboard=unnamedplus,autoselect
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
+      \   'readonly': '%{&readonly?"":""}',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '|' }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '|' }
       \ }
 
 " Bind easymotion to single leaderkey
@@ -176,7 +184,17 @@ set go-=f
 set go-=F
 set go-=b
 
-let hscoptions="t𝐒𝐓𝐄𝐌B𝔻"
+highlight Comment cterm=italic
+highlight htmlArg cterm=italic
+
+set history=1000
+set wildmode=longest,list,full
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
+set completeopt+=longest
+
+set cmdheight=1
+
+let hscoptions="shtD𝐒𝐓𝐄𝐌𝔻"
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc

@@ -44,30 +44,14 @@ function eme
   emacsclient -c $argv &
 end
 
-function s
-  git status -s $argv
-end
-function co
-  git checkout $argv
-end
-function rb
-  git rebase $argv
-end
-function l
-  git lg $argv
-end
-function mg
-  git merge $argv
-end
-function m
-  git commit -m $argv
-end
-function am
-  git commit -am $argv
-end
-function A
-  git add -A $argv
-end
+abbr s 'git status -s'
+abbr co 'git checkout'
+abbr rb 'git rebase'
+abbr l 'git lg'
+abbr mg 'git merge'
+abbr m 'git commit -m'
+abbr am 'git commit -am'
+abbr A 'git add -A'
 function rs
   git reset $argv
 end
@@ -77,18 +61,10 @@ end
 function com
   git commit $argv
 end
-function con
-  git rebase --continue $argv
-end
-function amend
-  git commit --amend $argv
-end
-function p
-  git push $argv
-end
-function pl
-  git pull $argv
-end
+abbr con 'git rebase --continue'
+abbr amend 'git commit --amend'
+abbr p 'git push'
+abbr pl 'git pull'
 function a
   git add $argv
 end
@@ -99,6 +75,9 @@ end
 function cherry
   git cherry-pick $argv
 end
+
+abbr pw 'pass show -c'
+abbr po 'pass otp show -c'
 
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
@@ -159,7 +138,15 @@ function wf
 end
 
 function vpn
-  sudo openvpn --config ~/joashnew.ovpn
+  if echo "nameserver 8.8.8.8" | cat - /etc/resolv.conf > /home/boo/.resolv
+    echo "Updating DNS..."
+    if sudo mv /home/boo/.resolv /etc/resolv.conf
+      echo "Updated DNS"
+      sudo openvpn --config ~/joashnew.ovpn
+    end
+  else 
+    echo "Updating DNS failed"
+  end
 end
 
 function fish_greeting
@@ -190,4 +177,15 @@ function spid
   kubectl port-forward (kubectl get pods --namespace spinnaker | grep spin-deck | awk '{print $1}') 9000 --namespace spinnaker 
 end
 
+function uhd
+  xrandr --output eDP1 --mode 3200x1800
+end
 
+function hd
+  xrandr --output eDP1 --mode 1920x1080
+end
+
+
+function trashempty
+  echo -n "Removing the trash........" | pv -qL 10 ; rm -rf  ~/.local/share/Trash/files
+end

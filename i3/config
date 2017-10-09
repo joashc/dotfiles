@@ -10,8 +10,13 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Start xautolock
-exec --no-startup-id  ~/dotfiles/suspend.sh
+exec --no-startup-id feh ~/.walls/new2.png --bg-fill
 exec --no-startup-id unclutter -grab
+exec --no-startup-id pasystray
+exec --no-startup-id nm-applet
+exec --no-startup-id xcape
+exec --no-startup-id libinput-gestures-setup start
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 set $mod Mod1
 
 # Toggles for changing border mode
@@ -37,7 +42,7 @@ workspace_auto_back_and_forth no
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:Ubuntu Light 12
+font pango:Roboto Light 12
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -170,20 +175,3 @@ bindsym $mod+Control+l resize grow width 15 px
 
 gaps inner 10
 
-bar {
-  status_command conky -c ~/.config/conky/conky.conf
-  mode dock
-  font pango:Roboto 10
-  position top
-  strip_workspace_numbers yes
-  colors {
-    background #454545
-      statusline #ffffff
-      separator #51c4d4
-
-      focused_workspace  #ecedee #ecedee #454545
-      active_workspace   #ecedee #ecedee #454545
-      inactive_workspace #454545 #454545 #ffffff
-      urgent_workspace   #454545 #454545 #ffffff
-  }
-}

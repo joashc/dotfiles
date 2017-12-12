@@ -194,10 +194,10 @@ function otp
 end
 
 function mfa
-  aws sts get-session-token --serial-number (echo ~/.mfaarn) --token-code (pass otp show awsprod) > ~/.awsmfa
+  aws sts get-session-token --serial-number (cat ~/.mfaarn) --token-code (pass otp show awsprod) > ~/.awsmfa
   sed -e "s`MFA_ACCESS_KEY`"(cat ~/.awsmfa | jq ".Credentials.AccessKeyId" -r)"`" ~/.aws/credentials.template > ~/.awstemp
   sed -i -e "s`MFA_SECRET_ACCESS_KEY`"(cat ~/.awsmfa | jq ".Credentials.SecretAccessKey" -r)"`" ~/.awstemp
-  sed -e "s`MFA_SESSION_TOKEN`"(cat ~/.awsmfa | jq ".Credentials.SessionToken" -r)"`" ~/.awstemp > ~/.aws/credentials.mfa
+  sed -e "s`MFA_SESSION_TOKEN`"(cat ~/.awsmfa | jq ".Credentials.SessionToken" -r)"`" ~/.awstemp > ~/.aws/credentials
 end
 
 function trashempty

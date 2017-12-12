@@ -17,6 +17,8 @@ height = 35
 background = #00000000
 foreground = #ccffffff
 
+border-top-size=3
+
 line-color = ${bar/bottom.background}
 line-size = 16
 
@@ -269,7 +271,7 @@ ping-interval = 10
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
-label-disconnected =  
+label-disconnected =   %{A}
 label-disconnected-foreground = #66
 
 ramp-signal-0 = 
@@ -346,3 +348,4 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 ;
 ; vim:ft=dosini
+

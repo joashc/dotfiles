@@ -185,6 +185,20 @@ function hd
   xrandr --output eDP1 --mode 1920x1080
 end
 
+function ama
+  pass show -c amazon.com/awsprod
+end
+
+function otp
+  pass otp show -c awsprod
+end
+
+function mfa
+  aws sts get-session-token --serial-number (echo ~/.mfaarn) --token-code (pass otp show awsprod) > ~/.awsmfa
+  sed -e "s`MFA_ACCESS_KEY`"(cat ~/.awsmfa | jq ".Credentials.AccessKeyId" -r)"`" ~/.aws/credentials.template > ~/.awstemp
+  sed -i -e "s`MFA_SECRET_ACCESS_KEY`"(cat ~/.awsmfa | jq ".Credentials.SecretAccessKey" -r)"`" ~/.awstemp
+  sed -e "s`MFA_SESSION_TOKEN`"(cat ~/.awsmfa | jq ".Credentials.SessionToken" -r)"`" ~/.awstemp > ~/.aws/credentials.mfa
+end
 
 function trashempty
   echo -n "Removing the trash........" | pv -qL 10 ; rm -rf  ~/.local/share/Trash/files

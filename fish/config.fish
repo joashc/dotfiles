@@ -203,3 +203,7 @@ end
 function trashempty
   echo -n "Removing the trash........" | pv -qL 10 ; rm -rf  ~/.local/share/Trash/files
 end
+
+function lr
+  ls -lrt
+end

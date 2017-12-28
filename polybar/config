@@ -14,6 +14,16 @@ monitor = ${env:MONITOR}
 width = 100%
 height = 35
 
+tray-position = right
+tray-padding = 2
+tray-detached = false
+tray-maxsize = 16
+tray-transparent = true
+tray-offset-x = 0
+tray-offset-y = 0
+;tray-padding = 0
+tray-scale = 1.0
+
 background = #00000000
 foreground = #ccffffff
 
@@ -32,9 +42,8 @@ font-1 = MaterialIcons:size=10;0
 font-2 = Termsyn:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
-modules-left = i3 cpu memory
+modules-left = i3 battery cpu memory
 modules-center = date
-modules-right = volume backlight wireless-network wired-network battery
 
 [bar/bottom]
 monitor = eDP-1
@@ -61,7 +70,7 @@ font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
 
 modules-left = bspwm
-modules-right = cpu memory
+modules-right = battery cpu memory 
 
 [module/backlight]
 type = internal/xbacklight

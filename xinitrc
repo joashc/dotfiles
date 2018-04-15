@@ -61,6 +61,11 @@ xbindkeys
 
 sh -c 'xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x384 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP1-2 --off --output DP1-3 --mode 1920x1080 --pos 3840x0 --rotate normal --output DP2 --off'
 
+sh -c 'xrandr --newmode "3840x2160R"  533.00  3840 3888 3920 4000  2160 2163 2168 2222 +hsync -vsync'
+sh -c 'xrandr --addmode DP1 "3840x2160R"' 
+sh -c 'xrandr --addmode DP1-1 "3840x2160R"'
+# sh -c 'xrandr --output eDP1 --off --output DP1 --mode "3840x2160R"
+
 #xmodmap ~/.speedswapper
 
 # make CapsLock behave like Ctrl:

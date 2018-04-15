@@ -76,6 +76,14 @@ function cherry
   git cherry-pick $argv
 end
 
+function kl
+  kubectl logs (kubectl get pods | grep $argv | awk '{print $1}')
+end
+
+function klf
+  kubectl logs (kubectl get pods | grep $argv | awk '{print $1}') --tail=10 -f
+end
+
 abbr pw 'pass show -c'
 abbr po 'pass otp show -c'
 
@@ -135,6 +143,12 @@ end
 
 function wf
   sudo wifi-menu
+end
+
+function dns
+  if echo "nameserver 8.8.8.8" | cat - /etc/resolv.conf > /home/boo/.resolv
+    echo "Updated DNS..."
+  end
 end
 
 function vpn
@@ -206,4 +220,12 @@ end
 
 function lr
   ls -lrt
+end
+
+function tv
+  xrandr --output DP1 --mode 3840x2160R --output eDP1 --off
+end
+
+function tv30
+  xrandr --output DP1 --mode 3840x2160 --output eDP1 --off
 end

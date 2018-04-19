@@ -195,6 +195,10 @@ function uhd
   xrandr --output eDP1 --mode 3200x1800
 end
 
+function 4k
+  xrandr --output eDP1 --mode 3840x2160
+end
+
 function hd
   xrandr --output eDP1 --mode 1920x1080
 end

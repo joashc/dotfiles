@@ -1,6 +1,7 @@
-URxvt.font:xft:Operator Mono Light:pixelsize=16:hinting=true
-URxvt.boldFont:xft:Operator Mono Light:pixelsize=16:hinting=true
-URxvt.italicFont:xft:Operator Mono Light:pixelsize=16:hinting=true
+URxvt.font:xft:Operator Mono Light:pixelsize=18:hinting=true
+URxvt.boldFont:xft:Operator Mono Light:pixelsize=18:hinting=true
+URxvt.italicFont:xft:Operator Mono Light:pixelsize=18:hinting=true
+URxvt.perl-ext-common: resize-font
 
 URxvt.scrollBar:false
 
@@ -18,7 +19,7 @@ URxvt.font-size.step: 2
 
 ! Size of cursor
 Xcursor.size: 32
-Xft.dpi: 120
+Xft.dpi: 192
 
 
 URxvt.depth:32
@@ -69,6 +70,6 @@ Xft.autohint: 0
 Xft.antialias: 1
 Xft.hinting: true
 Xft.hintstyle: hintslight
-Xft.dpi: 96
+Xft.dpi: 192
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault

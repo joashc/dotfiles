@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/sh
 
 initial_idle=$(xprintidle | bc)
 

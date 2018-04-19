@@ -25,7 +25,8 @@ tray-offset-y = 0
 tray-scale = 1.0
 
 background = #00000000
-foreground = #ccffffff
+#foreground = #ccffffff
+foreground = #111111
 
 border-top-size=3
 

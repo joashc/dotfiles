@@ -12,11 +12,12 @@
 # Start xautolock
 exec --no-startup-id feh ~/.walls/new2.png --bg-fill
 exec --no-startup-id unclutter -grab
-exec --no-startup-id pasystray
+exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id xcape
 exec --no-startup-id libinput-gestures-setup start
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 set $mod Mod1
 
 # Toggles for changing border mode

@@ -1,14 +1,13 @@
 URxvt.font:xft:Operator Mono Light:pixelsize=18:hinting=true
 URxvt.boldFont:xft:Operator Mono Light:pixelsize=18:hinting=true
 URxvt.italicFont:xft:Operator Mono Light:pixelsize=18:hinting=true
-URxvt.perl-ext-common: resize-font
 
 URxvt.scrollBar:false
 
 ! Enables copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.perl-ext-common: default,clipboard,font-size
+URxvt.perl-ext-common: default,clipboard,font-size,resize-font
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.C-Up:     perl:font-size:increase

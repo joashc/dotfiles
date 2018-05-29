@@ -4,6 +4,7 @@ set -gx LC_CTYPE en_AU.UTF-8
 set -g Z_SCRIPT_PATH /usr/lib/z.sh
 set -gx PATH /home/boo/.local/bin $PATH
 set -gx PATH /home/boo/.local/bin $PATH
+set -gx PATH /home/boo/.config/yarn/global/node_modules/.bin $PATH
 set -gx PATH /home/boo/go/gopath/bin $PATH
 
 # Path to Oh My Fish install.
@@ -68,9 +69,6 @@ abbr pl 'git pull'
 function a
   git add $argv
 end
-function win
-  VBoxManage startvm Windows10
-end
 
 function cherry
   git cherry-pick $argv
@@ -98,10 +96,12 @@ function chpwd --on-variable PWD
   ls
 end
 function caf
+  echo "Not sleepy"
   cp ~/dotfiles/.nosus ~/dotfiles/suspend.sh
 end
 
 function coff
+  echo "Sleepy"
   cp ~/dotfiles/.sus ~/dotfiles/suspend.sh
 end
 
@@ -152,6 +152,10 @@ function dns
 end
 
 function vpn
+  if ps cax | grep openvpn
+    echo "OpenVPN already running, killing..."
+    sudo killall -q openvpn
+  end
   if echo "nameserver 8.8.8.8" | cat - /etc/resolv.conf > /home/boo/.resolv
     echo "Updating DNS..."
     if sudo mv /home/boo/.resolv /etc/resolv.conf
@@ -173,6 +177,14 @@ end
 
 function prod
   kubectl config use-context kube.getswift.co
+end
+
+function eu
+  kubectl config use-context eu
+end
+
+function azure
+  kubectl config use-context azure
 end
 
 function kafprod
@@ -232,4 +244,12 @@ end
 
 function tv30
   xrandr --output DP1 --mode 3840x2160 --output eDP1 --off
+end
+
+function win
+  sudo virt-viewer --uuid cdd8c5d2-0939-4435-9863-8ed9310fcb8c -f
+end
+
+function pd
+  git diff HEAD~1 HEAD
 end

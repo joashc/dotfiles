@@ -12,7 +12,7 @@ alert = #bd2c40
 [bar/top]
 monitor = ${env:MONITOR}
 width = 100%
-height = 35
+height = 70
 
 tray-position = right
 tray-padding = 2
@@ -25,8 +25,8 @@ tray-offset-y = 0
 tray-scale = 1.0
 
 background = #00000000
-#foreground = #ccffffff
-foreground = #111111
+foreground = #ccffffff
+#foreground = #111111
 
 border-top-size=3
 
@@ -38,7 +38,7 @@ padding-right = 5
 padding-left = 5
 module-margin = 4
 
-font-0 = NotoSans-Regular:size=8;-1
+font-0 = NotoSans-Regular:size=16;-1
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsyn:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
@@ -201,10 +201,10 @@ format = <label> <ramp-coreload>
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
-ramp-coreload-0-foreground = #aaff77
+ramp-coreload-0-foreground = #fff
 ramp-coreload-1 = ▂
 ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = #aaff77
+ramp-coreload-1-foreground = #fff
 ramp-coreload-2 = ▃
 ramp-coreload-2-font = 2
 ramp-coreload-2-foreground = #aaff77
@@ -226,7 +226,7 @@ ramp-coreload-7-foreground = #ff5555
 
 [module/date]
 type = internal/date
-date = %%{F#fff}%a %d %B %%{F#fff}%I:%M%%{F#666}%
+date = %%{F#fff}%a %d %B %%{F#fff}%I:%M%%{F#fff}%
 
 [module/memory]
 type = internal/memory

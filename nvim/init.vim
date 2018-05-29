@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace'
 Plug 'rust-lang/rust.vim'

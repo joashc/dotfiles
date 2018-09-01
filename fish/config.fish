@@ -4,8 +4,10 @@ set -gx LC_CTYPE en_AU.UTF-8
 set -g Z_SCRIPT_PATH /usr/lib/z.sh
 set -gx PATH /home/boo/.local/bin $PATH
 set -gx PATH /home/boo/.local/bin $PATH
+set -gx PATH /usr/bin/core_perl/ $PATH
 set -gx PATH /home/boo/.config/yarn/global/node_modules/.bin $PATH
 set -gx PATH /home/boo/go/gopath/bin $PATH
+set -gx PATH /opt/google-cloud-sdk/bin $PATH
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"
@@ -95,12 +97,12 @@ function chpwd --on-variable PWD
   status --is-command-substitution; and return
   ls
 end
-function caf
+function wake
   echo "Not sleepy"
   cp ~/dotfiles/.nosus ~/dotfiles/suspend.sh
 end
 
-function coff
+function slpy
   echo "Sleepy"
   cp ~/dotfiles/.sus ~/dotfiles/suspend.sh
 end
@@ -179,6 +181,10 @@ function prod
   kubectl config use-context kube.getswift.co
 end
 
+function eug
+  kubectl config use-context kube-euwest.k8s.local
+end
+
 function eu
   kubectl config use-context eu
 end
@@ -189,6 +195,11 @@ end
 
 function kafprod
   kubectl config use-context kafka
+end
+
+function kp
+  kubectl config current-context
+  kubectl proxy
 end
 
 function mon
@@ -252,4 +263,20 @@ end
 
 function pd
   git diff HEAD~1 HEAD
+end
+
+function vf
+  vim (fzf)
+end
+
+function gd
+  git diff
+end
+
+function xc
+  xclip -selection clipboard
+end
+
+function kubetoken 
+    kubectl -n kube-system get secret --output=jsonpath='{.data.token}' (kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | base64 --decode | xclip -se c
 end

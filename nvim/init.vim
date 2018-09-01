@@ -2,18 +2,22 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tomasiser/vim-code-dark'
+Plug 'shime/vim-livedown', { 'for': 'markdown' }
+Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
+Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fireplace'
-Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-fugitive'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'tpope/vim-speeddating', { 'for': 'org' }
-Plug 'vim-scripts/paredit.vim'
+Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'jceb/vim-orgmode', { 'for': 'org' }
 Plug 'tpope/vim-surround'
-Plug 'leafgarland/typescript-vim'
-Plug 'mhartington/nvim-typescript'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
 Plug 'tpope/vim-commentary'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'itchyny/lightline.vim'
@@ -24,7 +28,7 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'jistr/vim-nerdtree-tabs' 
 
 call plug#end()
 "
@@ -99,7 +103,9 @@ highlight htmlArg cterm=italic
 set history=1000
 let g:ctrlp_map = '<s-t>'
 
-colorscheme scheakur
+set t_Co=256
+set t_ut=
+colorscheme codedark
 
 set number
 set wildmode=longest,list,full

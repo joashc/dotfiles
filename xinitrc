@@ -52,6 +52,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	done
 	unset f
 fi
+
+ssh-add /hom/boo/.ssh/id_rsa
+
 export LANG=en_AU.UTF-8
 export EDITOR=vim
 export GOPATH=~/go/gopath
@@ -71,6 +74,7 @@ sh -c 'xrandr --output DP1 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3
 
 # make CapsLock behave like Ctrl:
 setxkbmap -option caps:escape
+xinput --set-prop 11 'libinput Accel Speed' 0.5
 
 
 xset s off -dpms

@@ -71,5 +71,10 @@
     m:0x0 + c:121
     XF86AudioMute 
 
+# printscreen
+"maim -s | xclip -selection clipboard -t image/png"
+    m:0x0 + c:107
+    Print
+
 #
 # End of xbindkeys configuration

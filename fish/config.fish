@@ -8,6 +8,7 @@ set -gx PATH /usr/bin/core_perl/ $PATH
 set -gx PATH /home/boo/.config/yarn/global/node_modules/.bin $PATH
 set -gx PATH /home/boo/go/gopath/bin $PATH
 set -gx PATH /opt/google-cloud-sdk/bin $PATH
+set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"
@@ -47,6 +48,7 @@ function eme
   emacsclient -c $argv &
 end
 
+abbr gd 'git diff'
 abbr s 'git status -s'
 abbr co 'git checkout'
 abbr rb 'git rebase'
@@ -55,6 +57,7 @@ abbr mg 'git merge'
 abbr m 'git commit -m'
 abbr am 'git commit -am'
 abbr A 'git add -A'
+abbr f 'fd --type f'
 function rs
   git reset $argv
 end
@@ -267,10 +270,6 @@ end
 
 function vf
   vim (fzf)
-end
-
-function gd
-  git diff
 end
 
 function xc

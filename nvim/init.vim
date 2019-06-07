@@ -1,23 +1,33 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
+set hidden
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+"Plug 'w0rp/ale'
+Plug 'OrangeT/vim-csharp', {'for': 'cs'}
+Plug 'coyotebush/vim-pweave'
+Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
+Plug 'vim-syntastic/syntastic'
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'tomasiser/vim-code-dark'
+Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
-Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'branch': 'type_highlighting' }
 Plug 'tpope/vim-speeddating', { 'for': 'org' }
 Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'jceb/vim-orgmode', { 'for': 'org' }
 Plug 'tpope/vim-surround'
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
 Plug 'tpope/vim-commentary'
-" Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'itchyny/lightline.vim'
@@ -28,7 +38,7 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-"Plug 'jistr/vim-nerdtree-tabs' 
+Plug 'jistr/vim-nerdtree-tabs' 
 
 call plug#end()
 "
@@ -51,7 +61,7 @@ inoremap kk <Esc>
 set magic
 set noswapfile
 syntax enable
-set background=dark
+"set background=dark
 set ignorecase
 
 exec "set listchars=trail:\uB7\,nbsp:~"
@@ -89,8 +99,11 @@ set wrap
 set shiftwidth=2
 set tabstop=2
 
+filetype plugin on
+set completeopt=longest,menuone,preview
 highlight Comment cterm=italic
 highlight htmlArg cterm=italic
+
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -106,11 +119,14 @@ let g:ctrlp_map = '<s-t>'
 set t_Co=256
 set t_ut=
 colorscheme codedark
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=NONE guibg=NONE
+hi LineNr  ctermbg=NONE guibg=NONE
+hi EndOfBuffer ctermbg=NONE guibg=NONE
 
 set number
 set wildmode=longest,list,full
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
-set completeopt+=longest
 
 " Toggle nerdtree
 nnoremap <C-e> :NERDTreeTabsToggle<CR>
@@ -130,4 +146,77 @@ let g:lightline = {
       \ }
 
 set cursorline
-hi CursorLine ctermbg=Black
+
+
+let g:rustfmt_autosave = 1
+
+
+let g:ale_linters = { 'cs': ['OmniSharp'], 'rust': ['rls'] }
+
+augroup omnisharp_commands
+    autocmd!
+
+    " When Syntastic is available but not ALE, automatic syntax check on events
+    " (TextChanged requires Vim 7.4)
+    " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Add syntax highlighting for types and interfaces
+nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
+
+let g:OmniSharp_start_server = 0
+let g:OmniSharp_port = 2000
+let g:OmniSharp_server_use_mono = 1
+
+let g:ale_linters = {'rust': ['rls']}
+let g:ale_rust_rls_toolchain='nightly'
+let g:syntastic_always_populate_loc_list = 1
+
+let g:racer_cmd = "/home/boo/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:livepreview_engine = 'xelatex'

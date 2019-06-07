@@ -85,13 +85,17 @@ animation-discharging-framerate = 500
 
 battery = BAT0
 adapter = AC
-interval = 10
+interval = 60
 
+[module/batticon]
+type = custom/script
+exec = ~/polybar-scripts/batticon.sh
+font = 1
 
 [module/cpufreq]
 type = custom/script
 exec = cpupower frequency-info -fm | grep -oP '(?<=frequency: )([^ ]+ [^ ]+)'
-interval = 0.5
+interval = 5 
 
 [module/updates-arch]
 type = custom/script
@@ -127,12 +131,12 @@ padding-right = 5
 padding-left = 5
 module-margin = 4
 
-font-0 = NotoSans-Regular:size=16;-1
+font-0 = GoogleSans-Regular:size=16;-1
 font-1 = MaterialIcons:size=10;0
-font-2 = Termsyn:size=8:antialias=false;-2
-font-3 = FontAwesome:size=10;0
+font-2 = GoogleSans-Regular:size=8;-2
+font-3 = GoogleSans-Regular:size=10;0
 
-modules-left = i3 battery cpufreq cpu memory updates-arch isrunning-openvpn
+modules-left = i3 batticon battery cpufreq cpu memory updates-arch isrunning-openvpn
 modules-center = date
 
 [bar/bottom]
@@ -178,7 +182,7 @@ bar-empty-foreground = #44
 
 [module/cpu]
 type = internal/cpu
-interval = .5
+interval = 5
 format = <label> <ramp-coreload>
 
 ramp-coreload-0 = ▁
@@ -242,7 +246,7 @@ interface=enp57s0u1u2i5
 
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 3.0
+interval = 10
 
 ; Test connectivity every Nth update
 ; A value of 0 disables the feature

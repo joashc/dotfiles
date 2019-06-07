@@ -19,12 +19,29 @@ set -gx OMF_PATH "/home/boo/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
+abbr td topydo
+
 set fish_plugins z
+
+function scr
+  pkill compton
+  maim -s | xclip -selection clipboard -t image/png 
+  #compton --config ~/.compton.conf -b
+end
 
 function fish_user_key_bindings
  set -g fish_key_bindings fish_vi_key_bindings
 end
 
+function quiet
+  sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
+  sudo smbios-thermal-ctl --set-thermal-mode=quiet
+end
+
+function perf
+  sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
+  sudo smbios-thermal-ctl --set-thermal-mode=performance
+end
 
 function rmo
   sudo pacman -Rns (pacman -Qdtq)
@@ -146,13 +163,24 @@ function dl
   git diff HEAD^ HEAD
 end
 
+function transfer
+  curl --upload-file $argv[1] https://transfer.sh/$argv[1]
+end
+
+function agr
+  ag $argv[1] -0 -l | xargs -0 sed -ri.bak -e "s/$argv[1]/$argv[2]/g"
+end
+
 function wf
   sudo wifi-menu
 end
 
 function dns
   if echo "nameserver 8.8.8.8" | cat - /etc/resolv.conf > /home/boo/.resolv
-    echo "Updated DNS..."
+    echo "Updating DNS..."
+    if sudo mv /home/boo/.resolv /etc/resolv.conf
+      echo "Updated DNS"
+    end
   end
 end
 
@@ -261,7 +289,7 @@ function tv30
 end
 
 function win
-  sudo virt-viewer --uuid cdd8c5d2-0939-4435-9863-8ed9310fcb8c -f
+  remmina -c /home/boo/.local/share/remmina/1554768048675.remmina
 end
 
 function pd
@@ -269,13 +297,50 @@ function pd
 end
 
 function vf
-  vim (fzf)
+  set -x p (fzf)
+  echo $p
+  if test (echo $p | wc -c) -gt 1
+    vim $p
+  end
+end
+
+function fz
+  set -Ux p (fzf)
+end
+
+function af
+  git add (fzf)
+  git status -s
 end
 
 function xc
   xclip -selection clipboard
 end
 
+function gbp
+  git blame $p
+end
+
 function kubetoken 
     kubectl -n kube-system get secret --output=jsonpath='{.data.token}' (kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | base64 --decode | xclip -se c
+end
+
+function lap
+  sh -c 'xrandr --output DP1 --off --output eDP1 --mode 3840x2160 --rate 60.00 --same-as DP1'
+end
+
+function home
+  sh -c 'xrandr --output DP1 --mode 3840x2160R --rate 59.97 --output eDP1 --off'
+end
+
+function start
+  sudo systemctl start $argv
+end
+
+
+
+
+function work
+  sh -c 'xrandr --output DP1 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3840x2160 --rate 60.00 --right-of DP1'
+  feh /home/boo/.walls/new2.png --bg-fill
 end

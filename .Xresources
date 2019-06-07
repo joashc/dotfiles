@@ -15,11 +15,10 @@ URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt.font-size.step: 2
+URxvt*background: rgba:0300/0300/0600/b700
 
 ! Size of cursor
 Xcursor.size: 32
-Xft.dpi: 192
-
 
 URxvt.depth:32
 
@@ -80,3 +79,18 @@ Xft.hintstyle: hintslight
 Xft.dpi: 192
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
+
+
+rofi.color-window: argb:682d303b
+rofi.color-normal: argb:a82d303b, #c4cbd4, argb:96404552, #4084d6, #f9f9f9
+rofi.color-active: argb:a81d1f21, #65acff, argb:e44b5160, #4491ed, #f9f9f9
+rofi.width: 35
+rofi.lines: 8 
+rofi.padding:60
+rofi.separator-style:none
+rofi.columns: 1
+rofi.font: Operator Mono Light 16
+rofi.bw: 0
+rofi.eh: 1
+!rofi.separator-style: solid
+rofi.hide-scrollbar: true

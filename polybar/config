@@ -22,14 +22,14 @@ time-format = %H:%M
 ;   <bar-capacity>
 ;   <ramp-capacity>
 ;   <animation-charging>
-format-charging = <label-charging>
+format-charging = <label-charging> <animation-charging>
 
 ; Available tags:
 ;   <label-discharging> (default)
 ;   <bar-capacity>
 ;   <ramp-capacity>
 ;   <animation-discharging>
-format-discharging = <label-discharging>
+format-discharging = <label-discharging> <animation-discharging>
 
 ; Available tags:
 ;   <label-full> (default)
@@ -66,22 +66,24 @@ ramp-capacity-font=2
 bar-capacity-width = 10
 
 ; Only applies if <animation-charging> is used
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = a
+animation-charging-1 = b
+animation-charging-2 = c
+animation-charging-3 = d
+animation-charging-4 = e
 ; Framerate in milliseconds
 animation-charging-framerate = 750
+animation-charging-font=1
 
 ; Only applies if <animation-discharging> is used
 animation-discharging-0 = 
-animation-discharging-1 = 
+animation-discharging-1 = b 
 animation-discharging-2 = 
 animation-discharging-3 = 
 animation-discharging-4 = 
 ; Framerate in milliseconds
 animation-discharging-framerate = 500
+animation-discharging-font = 1
 
 battery = BAT0
 adapter = AC
@@ -132,7 +134,7 @@ padding-left = 5
 module-margin = 4
 
 font-0 = GoogleSans-Regular:size=16;-1
-font-1 = MaterialIcons:size=10;0
+font-1 = "Font Awesome 5 Free"-Regular:size=18;0
 font-2 = GoogleSans-Regular:size=8;-2
 font-3 = GoogleSans-Regular:size=10;0
 
@@ -183,7 +185,7 @@ bar-empty-foreground = #44
 [module/cpu]
 type = internal/cpu
 interval = 5
-format = <label> <ramp-coreload>
+format = <label>
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
@@ -238,7 +240,6 @@ bar-used-empty-foreground = #444444
 type = custom/script
 exec = ~/polybar-scripts/isrunning-openvpn.sh
 interval = 15
-`
 
 [module/network]
 type = internal/network

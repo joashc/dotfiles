@@ -8,6 +8,8 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+border_radius 10
 
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
@@ -36,10 +38,9 @@ bindsym $mod+Shift+n scratchpad show
 
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
-for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 
 # Default to 1 pixel border
-new_window none
+new_window pixel 0
 
 # class                 border  backgr. text    indicator
 client.focused          #4c5578 #5f677a #ffffff #2e9ef4
@@ -66,8 +67,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return split v;exec urxvt
-bindsym $mod+Return split h;exec urxvt
+bindsym $mod+Shift+Return split v;exec termite
+bindsym $mod+Return split h;exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill

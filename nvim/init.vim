@@ -80,6 +80,8 @@ nnoremap <silent> <C-n> :<C-u>call ToggleErrors()<CR>
 " Delete in normal mode to switch off highlighting till next search
 nnoremap <silent> <BS> :nohlsearch <cr>
 
+nnoremap <silent> ,j :%!jq '.'<CR>:set syntax=json<CR>
+
 let g:clipbrdDefaultReg = '+'
 set clipboard=unnamedplus
 set smartcase

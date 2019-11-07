@@ -20,6 +20,7 @@ set -gx OMF_PATH "/home/boo/.local/share/omf"
 source $OMF_PATH/init.fish
 
 abbr td topydo
+abbr kpt kube-prompt
 
 set fish_plugins z
 

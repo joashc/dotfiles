@@ -22,14 +22,14 @@ time-format = %H:%M
 ;   <bar-capacity>
 ;   <ramp-capacity>
 ;   <animation-charging>
-format-charging = <label-charging> <animation-charging>
+format-charging = <label-charging>
 
 ; Available tags:
 ;   <label-discharging> (default)
 ;   <bar-capacity>
 ;   <ramp-capacity>
 ;   <animation-discharging>
-format-discharging = <label-discharging> <animation-discharging>
+format-discharging = <label-discharging>
 
 ; Available tags:
 ;   <label-full> (default)
@@ -66,18 +66,18 @@ ramp-capacity-font=2
 bar-capacity-width = 10
 
 ; Only applies if <animation-charging> is used
-animation-charging-0 = a
-animation-charging-1 = b
-animation-charging-2 = c
-animation-charging-3 = d
-animation-charging-4 = e
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 ; Framerate in milliseconds
 animation-charging-framerate = 750
 animation-charging-font=1
 
 ; Only applies if <animation-discharging> is used
 animation-discharging-0 = 
-animation-discharging-1 = b 
+animation-discharging-1 =  
 animation-discharging-2 = 
 animation-discharging-3 = 
 animation-discharging-4 = 
@@ -87,7 +87,7 @@ animation-discharging-font = 1
 
 battery = BAT0
 adapter = AC
-interval = 60
+interval = 10000
 
 [module/batticon]
 type = custom/script
@@ -107,7 +107,7 @@ interval = 600
 [bar/top]
 monitor = ${env:MONITOR}
 width = 100%
-height = 70
+height = 50
 
 tray-position = right
 tray-padding = 2
@@ -133,7 +133,7 @@ padding-right = 5
 padding-left = 5
 module-margin = 4
 
-font-0 = GoogleSans-Regular:size=16;-1
+font-0 = GoogleSans-Regular:size=13;-1
 font-1 = "Font Awesome 5 Free"-Regular:size=18;0
 font-2 = GoogleSans-Regular:size=8;-2
 font-3 = GoogleSans-Regular:size=10;0

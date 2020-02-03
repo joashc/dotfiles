@@ -9,12 +9,12 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
-border_radius 10
+border_radius 7
 
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 # Start xautolock
-exec feh ~/.walls/new2.png --bg-fill
+exec_always feh ~/.walls/new2.png --bg-fill
 exec --no-startup-id unclutter -grab
 exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
@@ -184,7 +184,7 @@ bindsym $mod+Control+j resize grow height 55 px
 bindsym $mod+Control+k resize shrink height 55 px
 bindsym $mod+Control+l resize grow width 55 px
 
-gaps inner 10
+gaps inner 5
 
 # bar { 
 #   status_command conky -c ~/.config/conky/conky.conf

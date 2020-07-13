@@ -19,6 +19,7 @@ set -gx OMF_PATH "/home/boo/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
+abbr k kubectl
 abbr td topydo
 abbr kpt kube-prompt
 
@@ -31,17 +32,19 @@ function scr
 end
 
 function fish_user_key_bindings
- set -g fish_key_bindings fish_vi_key_bindings
+ set -g fish_key_bindings fish_hybrid_key_bindings
 end
 
 function quiet
   sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
   sudo smbios-thermal-ctl --set-thermal-mode=quiet
+  sudo cpupower frequency-set -g powersave
 end
 
 function perf
   sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
   sudo smbios-thermal-ctl --set-thermal-mode=performance
+  sudo cpupower frequency-set -g performance
 end
 
 function rmo
@@ -106,6 +109,7 @@ function klf
 end
 
 abbr pw 'pass show -c'
+abbr pws 'pass show'
 abbr po 'pass otp show -c'
 
 if status --is-login

@@ -191,6 +191,9 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
+set number relativenumber
+set nu rnu
+
 " Contextual code actions (uses fzf, CtrlP or unite.vim when available)
 nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
 " Run code actions with text selected in visual mode to extract method

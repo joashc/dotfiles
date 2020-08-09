@@ -63,9 +63,10 @@ compton -b --config /home/boo/.compton.conf
 
 xbindkeys
 
-sh -c 'xrandr --newmode "3840x2160R"  533.00  3840 3888 3920 4000  2160 2163 2168 2222 +hsync -vsync'
-#sh -c 'xrandr --addmode DP1 "3840x2160R"' 
-sh -c 'xrandr --addmode "DP-2" "3840x2160R"' 
+sh -c 'xrandr --newmode "3840x2160R"  712.75  3840 4160 4576 5312  2160 2163 2168 2237 -hsync +vsync'
+
+sh -c 'xrandr --addmode DP1 "3840x2160R"' 
+#sh -c 'xrandr --addmode "DP-2" "3840x2160R"' 
 #sh -c 'xrandr --addmode DP1-1 "3840x2160R"'
 
 #sh -c 'xrandr --output DP2 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3840x2160 --rate 60.00 --left-of DP2'
@@ -82,6 +83,6 @@ xinput --set-prop $(xinput | ag Touchpad | awk '{print $6}' | sed 's/id=//g' | b
 
 
 xset s off -dpms
-vncserver :1
+
 exec i3
 #exec openbox-session

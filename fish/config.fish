@@ -10,6 +10,14 @@ set -gx PATH /home/boo/go/gopath/bin $PATH
 set -gx PATH /opt/google-cloud-sdk/bin $PATH
 set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
+function bak
+  pass show -c (cat ~/.bksp)
+  read
+  pass show -c (cat ~/.bkp)
+end
+
+abbr dec sh ~/dec.sh
+
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"
 
@@ -38,6 +46,12 @@ end
 function quiet
   sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
   sudo smbios-thermal-ctl --set-thermal-mode=quiet
+  sudo cpupower frequency-set -g powersave
+end
+
+function bal
+  sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
+  sudo smbios-thermal-ctl --set-thermal-mode=balanced
   sudo cpupower frequency-set -g powersave
 end
 
@@ -70,6 +84,8 @@ function eme
 end
 
 abbr gd 'git diff'
+abbr gds 'git diff --staged'
+abbr gaf 'git add (fzf)'
 abbr s 'git status -s'
 abbr co 'git checkout'
 abbr rb 'git rebase'

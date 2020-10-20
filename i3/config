@@ -18,7 +18,6 @@ exec_always feh ~/.walls/beach.jpg --bg-fill
 exec --no-startup-id unclutter -grab
 exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
-exec --no-startup-id flashfocus
 exec --no-startup-id xcape
 exec --no-startup-id ssh-add ~/.ssh/id_rsa
 exec --no-startup-id dunst
@@ -179,10 +178,15 @@ mode "resize" {
         bindsym Caps_Lock mode "default"
 }
 
-bindsym $mod+Control+h resize shrink width 55 px
-bindsym $mod+Control+j resize grow height 55 px
-bindsym $mod+Control+k resize shrink height 55 px
-bindsym $mod+Control+l resize grow width 55 px
+bindsym $mod+Control+h resize shrink width 500 px
+bindsym $mod+Control+j resize grow height 250 px
+bindsym $mod+Control+k resize shrink height 250 px
+bindsym $mod+Control+l resize grow width 500 px
+
+bindsym $mod+Control+Shift+h resize shrink width 250 px
+bindsym $mod+Control+Shift+j resize grow height 125 px
+bindsym $mod+Control+Shift+k resize shrink height 125 px
+bindsym $mod+Control+Shift+l resize grow width 250 px
 
 gaps inner 5
 

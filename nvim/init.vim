@@ -2,10 +2,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
 set hidden
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 "Plug 'w0rp/ale'
-Plug 'OrangeT/vim-csharp', {'for': 'cs'}
 Plug 'coyotebush/vim-pweave'
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 Plug 'vim-syntastic/syntastic'
@@ -28,12 +26,12 @@ Plug 'jceb/vim-orgmode', { 'for': 'org' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'flazz/vim-colorschemes'
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'neomake/neomake'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -66,6 +64,18 @@ set ignorecase
 
 exec "set listchars=trail:\uB7\,nbsp:~"
 
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <C-Space>r <Plug>(coc-rename)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <C-.> <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <C-.>qf  <Plug>(coc-fix-current)
+
 function! ToggleErrors()
     let old_last_winnr = winnr('$')
     lclose
@@ -75,7 +85,20 @@ function! ToggleErrors()
     endif
 endfunction
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 nnoremap <silent> <C-n> :<C-u>call ToggleErrors()<CR>
+
+inoremap <silent><expr> <c-.> coc#refresh()
 
 " Delete in normal mode to switch off highlighting till next search
 nnoremap <silent> <BS> :nohlsearch <cr>
@@ -225,3 +248,20 @@ let g:syntastic_always_populate_loc_list = 1
 let g:racer_cmd = "/home/boo/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:livepreview_engine = 'xelatex'
+
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)

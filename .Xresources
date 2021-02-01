@@ -89,7 +89,7 @@ rofi.lines: 8
 rofi.padding:60
 rofi.separator-style:none
 rofi.columns: 1
-rofi.font: Operator Mono Light 16
+rofi.font: Operator Mono Lig Book 16 
 rofi.bw: 0
 rofi.eh: 1
 !rofi.separator-style: solid

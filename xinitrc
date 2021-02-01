@@ -59,17 +59,13 @@ export LANG=en_AU.UTF-8
 export EDITOR=vim
 export GOPATH=~/go/gopath
 export PATH=/usr/local/bin:/usr/bin
-compton -b --config /home/boo/.compton.conf
 
-xbindkeys
 
-sh -c 'xrandr --newmode "3840x2160R"  712.75  3840 4160 4576 5312  2160 2163 2168 2237 -hsync +vsync'
 
-sh -c 'xrandr --addmode DP1 "3840x2160R"' 
 #sh -c 'xrandr --addmode "DP-2" "3840x2160R"' 
 #sh -c 'xrandr --addmode DP1-1 "3840x2160R"'
 
-#sh -c 'xrandr --output DP2 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3840x2160 --rate 60.00 --left-of DP2'
+sh -c 'xrandr --output HDMI-0 --mode 3840x2160 --rate 59.97'
 # sh -c 'xrandr --output eDP1 --off --output DP1 --mode "3840x2160R"
 
 #xmodmap ~/.speedswapper
@@ -78,6 +74,7 @@ sh -c 'xrandr --addmode DP1 "3840x2160R"'
 #setxkbmap -option caps:escape
 xmodmap /home/boo/.xmodmap
 xcape -e 'Mode_switch=Escape'
+compton -b
 
 xinput --set-prop $(xinput | ag Touchpad | awk '{print $6}' | sed 's/id=//g' | bc) 'libinput Accel Speed' 0.6
 

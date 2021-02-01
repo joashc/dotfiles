@@ -1,5 +1,5 @@
 [options]
-font = Operator Mono, Light 12
+font = Operator Mono Lig, Light 8
 allow_bold=false
 clickable_url=true
 

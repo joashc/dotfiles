@@ -10,6 +10,8 @@ set -gx PATH /home/boo/go/gopath/bin $PATH
 set -gx PATH /opt/google-cloud-sdk/bin $PATH
 set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
+function fish_mode_promt; end
+
 function bak
   pass show -c (cat ~/.bksp)
   read
@@ -52,7 +54,7 @@ end
 function bal
   sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
   sudo smbios-thermal-ctl --set-thermal-mode=balanced
-  sudo cpupower frequency-set -g powersave
+  sudo cpupower frequency-set -g ondemand
 end
 
 function perf
@@ -130,7 +132,7 @@ abbr po 'pass otp show -c'
 
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-        exec startx -- -keeptty
+      exec startx -- -keeptty
     end
 end
 
@@ -214,7 +216,7 @@ function vpn
     echo "Updating DNS..."
     if sudo mv /home/boo/.resolv /etc/resolv.conf
       echo "Updated DNS"
-      sudo openvpn --config ~/joashnew.ovpn
+      sudo openvpn --config ~/.joashnew.ovpn
     end
   else 
     echo "Updating DNS failed"

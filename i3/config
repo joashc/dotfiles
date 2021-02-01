@@ -14,7 +14,7 @@ border_radius 7
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 # Start xautolock
-exec_always feh ~/.walls/beach.jpg --bg-fill
+exec_always feh ~/Downloads/wall.jpg --bg-fill
 exec --no-startup-id unclutter -grab
 exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet

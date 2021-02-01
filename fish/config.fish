@@ -10,7 +10,7 @@ set -gx PATH /home/boo/go/gopath/bin $PATH
 set -gx PATH /opt/google-cloud-sdk/bin $PATH
 set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
-function fish_mode_promt; end
+function fish_mode_prompt; end
 
 function bak
   pass show -c (cat ~/.bksp)

@@ -2,10 +2,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
 set hidden
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 "Plug 'w0rp/ale'
 Plug 'coyotebush/vim-pweave'
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh'
+    \ }
 Plug 'vim-syntastic/syntastic'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -126,8 +129,6 @@ set tabstop=2
 
 filetype plugin on
 set completeopt=longest,menuone,preview
-highlight Comment cterm=italic
-highlight htmlArg cterm=italic
 
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -136,14 +137,14 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-highlight Comment cterm=italic
-highlight htmlArg cterm=italic
 set history=1000
 let g:ctrlp_map = '<s-t>'
 
 set t_Co=256
 set t_ut=
 colorscheme codedark
+highlight Comment cterm=italic
+highlight htmlArg cterm=italic
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 hi LineNr  ctermbg=NONE guibg=NONE
@@ -209,10 +210,10 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
 augroup END
 
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap gs <Plug>(rust-def-split)
+" au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 set number relativenumber
 set nu rnu
@@ -245,8 +246,6 @@ let g:ale_linters = {'rust': ['rls']}
 let g:ale_rust_rls_toolchain='nightly'
 let g:syntastic_always_populate_loc_list = 1
 
-let g:racer_cmd = "/home/boo/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
 let g:livepreview_engine = 'xelatex'
 
 

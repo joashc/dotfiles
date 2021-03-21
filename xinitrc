@@ -74,7 +74,7 @@ sh -c 'xrandr --output HDMI-0 --mode 3840x2160 --rate 59.97'
 #setxkbmap -option caps:escape
 xmodmap /home/boo/.xmodmap
 xcape -e 'Mode_switch=Escape'
-compton -b
+picom -b
 
 xinput --set-prop $(xinput | ag Touchpad | awk '{print $6}' | sed 's/id=//g' | bc) 'libinput Accel Speed' 0.6
 

@@ -36,9 +36,9 @@ abbr kpt kube-prompt
 set fish_plugins z
 
 function scr
-  pkill compton
+  pkill picom
   maim -s | xclip -selection clipboard -t image/png 
-  #compton --config ~/.compton.conf -b
+  picom -b
 end
 
 function fish_user_key_bindings
@@ -140,6 +140,7 @@ function chpwd --on-variable PWD
   status --is-command-substitution; and return
   ls
 end
+
 function wake
   echo "Not sleepy"
   cp ~/dotfiles/.nosus ~/dotfiles/suspend.sh
@@ -223,9 +224,17 @@ function vpn
   end
 end
 
-function fish_greeting
+function rsproj
+  echo "/home/boo" > ~/.projdir
 end
 
+function setproj 
+  pwd > ~/.projdir
+end
+
+function fish_greeting
+  cd (cat ~/.projdir)
+end
 
 function dev
   kubectl config use-context kube-dev.getswift.co
@@ -359,9 +368,6 @@ end
 function start
   sudo systemctl start $argv
 end
-
-
-
 
 function work
   sh -c 'xrandr --output DP1 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3840x2160 --rate 60.00 --right-of DP1'

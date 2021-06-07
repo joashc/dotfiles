@@ -3,7 +3,7 @@ set -gx LC_ALL en_AU.UTF-8
 set -gx LC_CTYPE en_AU.UTF-8
 set -g Z_SCRIPT_PATH /usr/lib/z.sh
 set -gx PATH /home/boo/.local/bin $PATH
-set -gx PATH /home/boo/.local/bin $PATH
+set -gx PATH /home/boo/.cargo/bin $PATH
 set -gx PATH /usr/bin/core_perl/ $PATH
 set -gx PATH /home/boo/.config/yarn/global/node_modules/.bin $PATH
 set -gx PATH /home/boo/go/gopath/bin $PATH
@@ -19,6 +19,8 @@ function bak
 end
 
 abbr dec sh ~/dec.sh
+abbr r ranger
+abbr cu cd ..
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"
@@ -32,6 +34,7 @@ source $OMF_PATH/init.fish
 abbr k kubectl
 abbr td topydo
 abbr kpt kube-prompt
+abbr t terraform
 
 set fish_plugins z
 
@@ -87,7 +90,7 @@ end
 
 abbr gd 'git diff'
 abbr gds 'git diff --staged'
-abbr gaf 'git add (fzf)'
+abbr gaf 'git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add'
 abbr s 'git status -s'
 abbr co 'git checkout'
 abbr rb 'git rebase'
@@ -225,7 +228,7 @@ function vpn
 end
 
 function rsproj
-  echo "/home/boo" > ~/.projdir
+  rm ~/.projdir
 end
 
 function setproj 
@@ -233,7 +236,9 @@ function setproj
 end
 
 function fish_greeting
-  cd (cat ~/.projdir)
+  if test -e ~/.projdir
+    cd (cat ~/.projdir)
+  end
 end
 
 function dev
@@ -351,6 +356,10 @@ end
 
 function gbp
   git blame $p
+end
+
+function ipinf
+  curl ipinfo.io -s | jq ".ip" -r
 end
 
 function kubetoken 

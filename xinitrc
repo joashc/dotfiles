@@ -1,4 +1,4 @@
-#!/bin/sh
+!/bin/sh
 
 userresources=$HOME/.Xresources
 sysresources=/etc/X11/xinit/.Xresources
@@ -53,8 +53,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
-ssh-add /hom/boo/.ssh/id_rsa
-
 export LANG=en_AU.UTF-8
 export EDITOR=vim
 export GOPATH=~/go/gopath
@@ -76,7 +74,7 @@ xmodmap /home/boo/.xmodmap
 xcape -e 'Mode_switch=Escape'
 picom -b
 
-xinput --set-prop $(xinput | ag Touchpad | awk '{print $6}' | sed 's/id=//g' | bc) 'libinput Accel Speed' 0.6
+#xinput --set-prop $(xinput | ag Touchpad | awk '{print $6}' | sed 's/id=//g' | bc) 'libinput Accel Speed' 0.6
 
 
 xset s off -dpms

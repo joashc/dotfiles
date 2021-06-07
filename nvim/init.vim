@@ -3,7 +3,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 set mouse=a
 set hidden
 "Plug 'w0rp/ale'
+Plug 'milkypostman/vim-togglelist'
+Plug 'jdonaldson/vaxe'
+Plug 'arcticicestudio/nord-vim'
 Plug 'coyotebush/vim-pweave'
+Plug 'hashivim/vim-terraform'
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -22,7 +26,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'branch': 'type_highlighting' }
 Plug 'tpope/vim-speeddating', { 'for': 'org' }
 Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
 Plug 'jceb/vim-orgmode', { 'for': 'org' }
@@ -71,8 +74,6 @@ exec "set listchars=trail:\uB7\,nbsp:~"
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <C-Space>r <Plug>(coc-rename)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <C-.> <Plug>(coc-codeaction)
@@ -142,8 +143,8 @@ let g:ctrlp_map = '<s-t>'
 
 set t_Co=256
 set t_ut=
-colorscheme codedark
-highlight Comment cterm=italic
+colorscheme nord
+highlight Comment cterm=italic ctermfg=Gray
 highlight htmlArg cterm=italic
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE guibg=NONE
@@ -177,38 +178,6 @@ set cursorline
 let g:rustfmt_autosave = 1
 
 
-let g:ale_linters = { 'cs': ['OmniSharp'], 'rust': ['rls'] }
-
-augroup omnisharp_commands
-    autocmd!
-
-    " When Syntastic is available but not ALE, automatic syntax check on events
-    " (TextChanged requires Vim 7.4)
-    " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-
-    " Show type information automatically when the cursor stops moving
-    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-    " The following commands are contextual, based on the cursor position.
-    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-
-    " Finds members in the current buffer
-    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
-
-    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
-    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
-    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
-
-
-    " Navigate up and down by method/property/field
-    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
-    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
-augroup END
 
 " au FileType rust nmap gd <Plug>(rust-def)
 " au FileType rust nmap gs <Plug>(rust-def-split)
@@ -218,29 +187,6 @@ augroup END
 set number relativenumber
 set nu rnu
 
-" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
-nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
-" Run code actions with text selected in visual mode to extract method
-xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
-
-" Rename with dialog
-nnoremap <Leader>nm :OmniSharpRename<CR>
-nnoremap <F2> :OmniSharpRename<CR>
-" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
-command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-
-nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
-
-" Start the omnisharp server for the current solution
-nnoremap <Leader>ss :OmniSharpStartServer<CR>
-nnoremap <Leader>sp :OmniSharpStopServer<CR>
-
-" Add syntax highlighting for types and interfaces
-nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
-
-let g:OmniSharp_start_server = 0
-let g:OmniSharp_port = 2000
-let g:OmniSharp_server_use_mono = 1
 
 let g:ale_linters = {'rust': ['rls']}
 let g:ale_rust_rls_toolchain='nightly'
@@ -254,6 +200,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <silent> gR <Plug>(coc-rename)
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)

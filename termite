@@ -1,43 +1,32 @@
 [options]
-font = Operator Mono Lig, Light 8
+font = Operator Mono Lig, Light 7
 allow_bold=false
 clickable_url=true
 
 [colors]
-# special
-foreground      = #d3d0c8
-foreground_bold = #d3d0c8
-cursor          = #d3d0c8
-background      = rgba(63, 63, 63, 0.98)
+cursor = #d8dee9
+cursor_foreground = #2e3440
 
-# black
-color0  = #2d2d2d
-color8  = #747369
+foreground = #d8dee9
+foreground_bold = #d8dee9
 
-# red
-color1  = #f2777a
-color9  = #f2777a
+background      = rgba(46, 52, 64, 0.98)
 
-# green
-color2  = #99cc99
-color10 = #99cc99
+highlight = #4c566a
 
-# yellow
-color3  = #ffcc66
-color11 = #ffcc66
-
-# blue
-color4  = #6699cc
-color12 = #6699cc
-
-# magenta
-color5  = #cc99cc
-color13 = #cc99cc
-
-# cyan
-color6  = #66cccc
-color14 = #66cccc
-
-# white
-color7  = #d3d0c8
-color15 = #f2f0ec
+color0  = #3b4252
+color1  = #bf616a
+color2  = #a3be8c
+color3  = #ebcb8b
+color4  = #81a1c1
+color5  = #b48ead
+color6  = #88c0d0
+color7  = #e5e9f0
+color8  = #4c566a
+color9  = #bf616a
+color10 = #a3be8c
+color11 = #ebcb8b
+color12 = #81a1c1
+color13 = #b48ead
+color14 = #8fbcbb
+color15 = #eceff4

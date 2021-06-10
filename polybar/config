@@ -249,7 +249,7 @@ bar-used-empty-foreground = #444444
 
 [module/isrunning-openvpn]
 type = custom/script
-exec = ~/polybar-scripts/isrunning-openvpn.sh
+exec = ~/dotfiles/isrunning-openvpn.sh
 interval = 15
 
 [module/network]

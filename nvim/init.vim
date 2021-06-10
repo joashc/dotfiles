@@ -6,6 +6,9 @@ set hidden
 Plug 'milkypostman/vim-togglelist'
 Plug 'jdonaldson/vaxe'
 Plug 'arcticicestudio/nord-vim'
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+"Plug 'w0rp/ale'
+Plug 'djoshea/vim-autoread'
 Plug 'coyotebush/vim-pweave'
 Plug 'hashivim/vim-terraform'
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
@@ -16,10 +19,11 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'vim-syntastic/syntastic'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'tomasiser/vim-code-dark'
 Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'shime/vim-livedown', { 'for': 'markdown' }
+Plug 'previm/previm', { 'for': 'markdown' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'scrooloose/nerdtree'
@@ -172,6 +176,10 @@ let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ }
 
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
 set cursorline
 
 
@@ -193,6 +201,7 @@ let g:ale_rust_rls_toolchain='nightly'
 let g:syntastic_always_populate_loc_list = 1
 
 let g:livepreview_engine = 'xelatex'
+let g:previm_open_cmd='chromium'
 
 
 " GoTo code navigation.
@@ -213,3 +222,4 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+

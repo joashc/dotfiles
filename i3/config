@@ -189,7 +189,7 @@ bindsym $mod+Control+Shift+j resize grow height 125 px
 bindsym $mod+Control+Shift+k resize shrink height 125 px
 bindsym $mod+Control+Shift+l resize grow width 250 px
 
-gaps inner 5
+gaps inner 15 
 
 # bar { 
 #   status_command conky -c ~/.config/conky/conky.conf

@@ -65,6 +65,40 @@ ramp-capacity-font=2
 ; Only applies if <bar-capacity> is used
 bar-capacity-width = 10
 
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+animation-charging-font=1
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 =  
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
+animation-discharging-font = 1
+
+battery = BAT0
+adapter = AC
+interval = 10000
+
+[module/caf]
+type = custom/script
+exec = ~/dotfiles/caf.sh
+font = 1
+
+[module/batticon]
+type = custom/script
+exec = ~/polybar-scripts/batticon.sh
+font = 1
+
 [module/cpufreq]
 type = custom/script
 exec = cpupower frequency-info -fm | grep -oP '(?<=frequency: )([^ ]+ [^ ]+)'
@@ -78,7 +112,7 @@ interval = 5
 
 [module/updates-arch]
 type = custom/script
-exec = ~/.config/polybar-scripts/polybar-scripts/updates-aurhelper/updates-aurhelper.sh
+exec = ~/polybar-scripts/updates-arch.sh
 interval = 600
 
 [bar/top]
@@ -111,12 +145,12 @@ padding-left = 5
 module-margin = 4
 
 font-0 = GoogleSans-Regular:size=13;-1
-font-1 = "Font Awesome 5 Free"-Regular:size=18;0
+font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=14;-1
 font-2 = GoogleSans-Regular:size=8;-2
 font-3 = GoogleSans-Regular:size=10;0
 
-modules-left = i3 batticon battery cpufreq cpu memory updates-arch 
-modules-center = date
+modules-left = i3 batticon cpufreq cpu memory updates-arch isrunning-openvpn caf
+modules-center = date 
 
 [bar/bottom]
 monitor = eDP-1

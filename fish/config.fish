@@ -130,6 +130,15 @@ function klf
 end
 
 abbr pw 'pass show -c'
+
+function pf
+  fd . --type f ~/.password-store | sed -e 's|.*\.password-store/||g' | sed 's/.gpg$//g' | fzf | xargs pass show -c
+end
+
+function pfs
+  fd . --type f ~/.password-store | sed -e 's|.*\.password-store/||g' | sed 's/.gpg$//g' | fzf | xargs pass show
+end
+
 abbr pws 'pass show'
 abbr po 'pass otp show -c'
 

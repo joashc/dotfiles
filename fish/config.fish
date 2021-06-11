@@ -31,6 +31,8 @@ set -gx OMF_PATH "/home/boo/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
+abbr bds bluetoothctl -- connect 08:BF:A0:B2:26:1E
+
 abbr k kubectl
 abbr td topydo
 abbr kpt kube-prompt

@@ -93,6 +93,7 @@ interval = 10000
 type = custom/script
 exec = ~/dotfiles/caf.sh
 font = 1
+interval = 5
 
 [module/batticon]
 type = custom/script
@@ -112,7 +113,7 @@ interval = 5
 
 [module/updates-arch]
 type = custom/script
-exec = ~/polybar-scripts/updates-arch.sh
+exec = ~/.config/polybar-scripts/polybar-scripts/updates-aurhelper/updates-aurhelper.sh
 interval = 600
 
 [bar/top]
@@ -149,7 +150,7 @@ font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=14;-1
 font-2 = GoogleSans-Regular:size=8;-2
 font-3 = GoogleSans-Regular:size=10;0
 
-modules-left = i3 batticon cpufreq cpu memory updates-arch isrunning-openvpn caf
+modules-left = i3 cpufreq cpu memory updates-arch isrunning-openvpn caf
 modules-center = date 
 
 [bar/bottom]

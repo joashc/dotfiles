@@ -4,6 +4,7 @@ set mouse=a
 set hidden
 "Plug 'w0rp/ale'
 Plug 'milkypostman/vim-togglelist'
+Plug 'udalov/kotlin-vim'
 Plug 'jdonaldson/vaxe'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
@@ -52,10 +53,11 @@ call plug#end()
 "
 " Bind easymotion to single leaderkey
 let mapleader=" "
-map <Leader> <Plug>(easymotion-prefix)
+map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " bind save to control s
 :nmap <c-s> :w<cr>
+:nmap <Leader>. <Plug>(coc-codeaction-line)
 :imap <c-s> <esc>:w<cr>a
 :imap <c-s> <esc><c-s>
 let g:ctrlp_map = '<s-t>'
@@ -167,8 +169,13 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
 set noshowmode
+
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
 nnoremap <C-j>  :tabprev<CR>
 nnoremap <C-k>  :tabnext<CR>
+inoremap <C-j>  <Esc>:tabprev<CR>
+inoremap <C-k>  <Esc>:tabnext<CR>
 map <Bar> <C-W>v<C-W><Right>
 map -     <C-W>s<C-W><Down>
 

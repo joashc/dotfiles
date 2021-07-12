@@ -134,7 +134,8 @@ end
 abbr pw 'pass show -c'
 
 function pf
-  fd . --type f ~/.password-store | sed -e 's|.*\.password-store/||g' | sed 's/.gpg$//g' | fzf | xargs pass show -c
+  fd . --type f ~/.password-store | sed -e 's|.*\.password-store/||g' | sed 's/.gpg$//g' | fzf > ~/.pw
+  xargs -a ~/.pw pass show -c
 end
 
 function pfs

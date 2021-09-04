@@ -2,7 +2,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
 set hidden
-"Plug 'w0rp/ale'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'darrikonn/vim-gofmt'
 Plug 'milkypostman/vim-togglelist'
 Plug 'udalov/kotlin-vim'
 Plug 'jdonaldson/vaxe'
@@ -58,6 +59,8 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 " bind save to control s
 :nmap <c-s> :w<cr>
 :nmap <Leader>. <Plug>(coc-codeaction-line)
+:nmap <Leader>e :CocList diagnostics<cr>
+:nmap <Leader>E :CocDiagnostics<cr>
 :imap <c-s> <esc>:w<cr>a
 :imap <c-s> <esc><c-s>
 let g:ctrlp_map = '<s-t>'

@@ -8,16 +8,13 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'udalov/kotlin-vim'
 Plug 'jdonaldson/vaxe'
 Plug 'arcticicestudio/nord-vim'
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
-"Plug 'w0rp/ale'
 Plug 'djoshea/vim-autoread'
 Plug 'coyotebush/vim-pweave'
 Plug 'hashivim/vim-terraform'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'mfussenegger/nvim-dap-python'
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh'
-    \ }
 Plug 'vim-syntastic/syntastic'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -31,6 +28,7 @@ Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'tpope/vim-speeddating', { 'for': 'org' }
 Plug 'vim-scripts/paredit.vim', { 'for': 'clojure' }
@@ -55,6 +53,7 @@ call plug#end()
 " Bind easymotion to single leaderkey
 let mapleader=" "
 map <Leader><Leader> <Plug>(easymotion-prefix)
+
 
 " bind save to control s
 :nmap <c-s> :w<cr>
@@ -206,8 +205,6 @@ set number relativenumber
 set nu rnu
 
 
-let g:ale_linters = {'rust': ['rls']}
-let g:ale_rust_rls_toolchain='nightly'
 let g:syntastic_always_populate_loc_list = 1
 
 let g:livepreview_engine = 'xelatex'

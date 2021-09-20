@@ -10,6 +10,8 @@ Plug 'jdonaldson/vaxe'
 Plug 'arcticicestudio/nord-vim'
 Plug 'djoshea/vim-autoread'
 Plug 'coyotebush/vim-pweave'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'hashivim/vim-terraform'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -39,7 +41,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'kien/ctrlp.vim'
 Plug 'neomake/neomake'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
@@ -63,6 +64,7 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 :imap <c-s> <esc>:w<cr>a
 :imap <c-s> <esc><c-s>
 let g:ctrlp_map = '<s-t>'
+nnoremap <s-t> <cmd>Telescope find_files<cr>
 set so=7
 set laststatus=2
 set foldcolumn=0

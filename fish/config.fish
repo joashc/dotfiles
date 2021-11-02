@@ -18,6 +18,18 @@ function bak
   pass show -c (cat ~/.bkp)
 end
 
+function ww 
+  cd ~/vimwiki
+  vim index.wiki
+end
+
+function cw
+  cd ~/vimwiki
+  git add -A
+  git commit -m "update"
+  git push
+end
+
 abbr dec sh ~/dec.sh
 abbr r ranger
 abbr cu cd ..

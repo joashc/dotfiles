@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 set mouse=a
 set hidden
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'vimwiki/vimwiki'
 Plug 'darrikonn/vim-gofmt'
 Plug 'milkypostman/vim-togglelist'
 Plug 'udalov/kotlin-vim'
@@ -212,6 +213,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:livepreview_engine = 'xelatex'
 let g:previm_open_cmd='chromium'
 
+let g:vimwiki_list = [ { 'auto_diary_index': 1 } ]
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)

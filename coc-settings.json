@@ -1,0 +1,28 @@
+{
+  "codeLens.enable": true,
+  "rust-analyzer.lens-methodReferences": true,
+  "codeLens.separator": "•",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextPrefix":  "• ",
+  "python.linting.mypyEnabled": true,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  },
+
+  "yaml.schemas": {
+      "kubernetes": "/*.yaml"
+  }
+}

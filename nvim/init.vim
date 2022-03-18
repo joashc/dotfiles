@@ -4,7 +4,6 @@ set mouse=a
 set hidden
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'vimwiki/vimwiki'
-Plug 'darrikonn/vim-gofmt'
 Plug 'milkypostman/vim-togglelist'
 Plug 'udalov/kotlin-vim'
 Plug 'jdonaldson/vaxe'
@@ -58,10 +57,17 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 
 
 " bind save to control s
+
+:nmap <silent> <c-s-k> :wincmd k<CR>
+:nmap <silent> <c-s-j> :wincmd j<CR>
+:nmap <silent> <c-s-h> :wincmd h<CR>
+:nmap <silent> <c-s-l> :wincmd l<CR>
+:nmap <c-s-cr> <Plug>VimwikiTabnewLink
 :nmap <c-s> :w<cr>
 :nmap <Leader>. <Plug>(coc-codeaction-line)
 :nmap <Leader>e :CocList diagnostics<cr>
 :nmap <Leader>E :CocDiagnostics<cr>
+:nmap <c-p> :CocCommand<cr>
 :imap <c-s> <esc>:w<cr>a
 :imap <c-s> <esc><c-s>
 let g:ctrlp_map = '<s-t>'
@@ -87,9 +93,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <C-.> <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <C-.>qf  <Plug>(coc-fix-current)
+:nmap <silent> <c-Space> :CocAction<CR>
+" " Apply AutoFix to problem on the current line.
+" nmap <C-.>qf  <Plug>(coc-fix-current)
 
 function! ToggleErrors()
     let old_last_winnr = winnr('$')
@@ -233,4 +239,5 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
 

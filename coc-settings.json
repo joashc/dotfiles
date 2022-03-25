@@ -2,7 +2,14 @@
   "codeLens.enable": true,
   "rust-analyzer.lens-methodReferences": true,
   "codeLens.separator": "•",
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "go", "python"],
+  "python.formatting.provider": "yapf",
   "diagnostic.virtualText": true,
+  "explorer": { },
+  "go.goplsPath": "/home/boo/go/gopath/bin/gopls",
+  "go.goplsOptions": {
+    "gofumpt": true
+  },
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextPrefix":  "• ",
   "python.linting.mypyEnabled": true,

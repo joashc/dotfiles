@@ -33,6 +33,7 @@ end
 abbr dec sh ~/dec.sh
 abbr r ranger
 abbr cu cd ..
+abbr ac . bin/activate.fish
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"
@@ -54,6 +55,7 @@ set fish_plugins z
 
 function scr
   pkill picom
+  sleep 0.2
   maim -s | xclip -selection clipboard -t image/png 
   picom -b
 end
@@ -403,7 +405,12 @@ function start
   sudo systemctl start $argv
 end
 
+function fs
+  kitty -1 fish &
+end
+
 function work
   sh -c 'xrandr --output DP1 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3840x2160 --rate 60.00 --right-of DP1'
   feh /home/boo/.walls/new2.png --bg-fill
 end
+

@@ -4,6 +4,7 @@ set mouse=a
 set hidden
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'vimwiki/vimwiki'
+Plug 'lambdalisue/nerdfont.vim'
 Plug 'milkypostman/vim-togglelist'
 Plug 'udalov/kotlin-vim'
 Plug 'jdonaldson/vaxe'
@@ -27,7 +28,6 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'previm/previm', { 'for': 'markdown' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -47,7 +47,6 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-Plug 'jistr/vim-nerdtree-tabs' 
 
 call plug#end()
 "
@@ -172,12 +171,9 @@ set number
 set wildmode=longest,list,full
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
 
-" Toggle nerdtree
-nnoremap <C-e> :NERDTreeTabsToggle<CR>
+" Toggle explorer
+nnoremap <C-e> :CocCommand explorer --no-focus --sources buffer+,file+<CR>
 set cmdheight=1
-
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
 
 set noshowmode
 
@@ -223,9 +219,11 @@ let g:vimwiki_list = [ { 'auto_diary_index': 1 } ]
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+imap <C-l> <Plug>(coc-snippets-expand)
 
 " Symbol renaming.
 nmap <silent> gR <Plug>(coc-rename)
@@ -239,5 +237,4 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
 

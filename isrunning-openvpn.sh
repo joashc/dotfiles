@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$(pgrep openvpn)" ]; then
-    echo "VPN"
+    echo ""
 else
     echo ""
 fi

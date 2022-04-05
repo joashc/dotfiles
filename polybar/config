@@ -1,13 +1,14 @@
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #55555555
+background = #D8DEE9
+background-alt = #4C566A
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+foreground = #2E3440
+foreground-alt = #434C5E
+primary = #ECEFF4
+secondary = #D08770
+secondary-alt = #8FBCBB
+alert = #86444f
 
 [module/battery]
 type = internal/battery
@@ -94,6 +95,7 @@ type = custom/script
 exec = ~/dotfiles/caf.sh
 font = 1
 interval = 5
+label-foreground=${colors.foreground-alt}
 
 [module/batticon]
 type = custom/script
@@ -102,6 +104,7 @@ font = 1
 
 [module/cpufreq]
 type = custom/script
+label-foreground = ${colors.foreground}
 exec = cpupower frequency-info -fm | grep -oP '(?<=frequency: )([^ ]+ [^ ]+)'
 interval = 1
 
@@ -113,27 +116,28 @@ interval = 5
 
 [module/updates-arch]
 type = custom/script
-exec = ~/.config/polybar-scripts/polybar-scripts/updates-aurhelper/updates-aurhelper.sh
+exec = ~/.config/polybar-scripts/polybar-scripts/updates-pacman-aurhelper/updates-pacman-aurhelper.sh
+label-foreground=${colors.foreground-alt}
 interval = 600
 
 [bar/top]
 monitor = ${env:MONITOR}
 bottom=false
 width = 100%
-height = 60
+height = 55
 
 tray-position = right
-tray-padding = 2
+tray-padding = 0
 tray-detached = false
-tray-maxsize = 36
+tray-maxsize = 14
 tray-transparent = true
 tray-offset-x = 0
-tray-offset-y = 0
+tray-offset-y = -4
 ;tray-padding = 0
 tray-scale = 1.0
 
 background = #00000000
-foreground = #ccffffff
+#foreground = #ccffffff
 #foreground = #111111
 
 border-top-size=3
@@ -146,13 +150,15 @@ padding-right = 5
 padding-left = 5
 module-margin = 4
 
-font-0 = GoogleSans-Regular:size=13;-1
-font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=14;-1
-font-2 = GoogleSans-Regular:size=8;-2
+font-0 = Product Sans Medium:size=11;-1
+font-1 = Font Awesome 6 Pro Solid,Font Awesome 6 Pro:style=Solid:size=14;-1
+font-2 = GoogleSans-Regular:size=11;-1
 font-3 = GoogleSans-Regular:size=10;0
+font-4 = Font Awesome 6 Pro Solid,Font Awesome 6 Pro:style=Solid:size=10;-1
 
-modules-left = i3 cpufreq cpu memory updates-arch isrunning-openvpn caf
+modules-left = i3 cpufreq cpu network 
 modules-center = date 
+modules-right=updates-arch isrunning-openvpn caf
 
 [bar/bottom]
 monitor = eDP-1
@@ -163,7 +169,7 @@ height = 27
 background = ${bar/top.background}
 foreground = ${bar/top.foreground}
 
-line-color = ${bar/top.background}
+line-color = ${bar/top.background-alt}
 line-size = 2
 
 spacing = 3
@@ -195,10 +201,18 @@ bar-empty = ─
 bar-empty-font = 3
 bar-empty-foreground = #44
 
+[module/date]
+type = internal/date
+date = %a %b %d %I:%M
+label-foreground = ${colors.foreground}
+label-font=3
+
 [module/cpu]
 type = internal/cpu
+label-foreground = ${colors.foreground}
 interval = 1
 format = <label>
+label= %percentage%%
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
@@ -225,42 +239,43 @@ ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
 
-[module/date]
-type = internal/date
-date = %%{F#fff}%a %d %B %%{F#fff}%I:%M%%{F#fff}%
-
 [module/memory]
 type = internal/memory
-format = <label> <bar-used>
+format = <bar-used>
+label-foreground = ${colors.foreground-alt}
 
 interval = 5 
 
 bar-used-width = 5
-bar-used-foreground-0 = #aaff77
-bar-used-foreground-1 = #aaff77
-bar-used-foreground-2 = #fba922
-bar-used-foreground-3 = #ff5555
-bar-used-indicator = |
+bar-used-foreground-0 = #3B4252
+bar-used-foreground-1 = #3B4252
+bar-used-foreground-2 = #3B4252
+bar-used-foreground-3 = #3B4252
+bar-used-indicator =
 bar-used-indicator-font = 6
-bar-used-indicator-foreground = #ff
-bar-used-fill = ─
+bar-used-indicator-foreground = #3B4252
+bar-used-fill=
 bar-used-fill-font = 6
-bar-used-empty = ─
+bar-used-empty=
 bar-used-empty-font = 6
-bar-used-empty-foreground = #444444
+bar-used-empty-foreground = #4C566A
 
 [module/isrunning-openvpn]
 type = custom/script
+label-foreground = ${colors.foreground-alt}
 exec = ~/dotfiles/isrunning-openvpn.sh
 interval = 15
 
 [module/network]
 type = internal/network
-interface=enp57s0u1u2i5
+interface=wlp6s0
 
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 10
+format-connected=<label-connected>
+label-connected=%netspeed%
+label-connected-foreground=${colors.foreground}
 
 ; Test connectivity every Nth update
 ; A value of 0 disables the feature
@@ -330,12 +345,19 @@ ramp-volume-2 = 
 ramp-volume-3 = 
 
 
-[module/clock]
-type = internal/date
-interval = 2
-date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
-
 [module/i3]
+
+label-active-font=1
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
@@ -345,16 +367,18 @@ wrapping-scroll = false
 pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = #000
+
 label-mode-background = ${colors.primary}
 
 ; ; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused = %icon% 
+label-focused-foreground = ${colors.foreground}
+label-focused-font = 2
 label-focused-padding = 2
 
 ; ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.foreground-alt}
 label-unfocused-padding = 2
 
 ; ; visible = Active workspace on unfocused monitor
@@ -363,8 +387,8 @@ label-visible-background = ${colors.background}
 label-visible-padding = 2
 
 ; ; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 2
 ;
 ; vim:ft=dosini

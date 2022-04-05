@@ -32,8 +32,13 @@ end
 
 abbr dec sh ~/dec.sh
 abbr r ranger
+abbr gs git show
 abbr cu cd ..
-abbr ac . bin/activate.fish
+abbr ve . bin/activate.fish
+
+function gsf
+  git show $argv:(fzf)
+end
 
 # Path to Oh My Fish install.
 set -gx OMF_PATH "/home/boo/.local/share/omf"

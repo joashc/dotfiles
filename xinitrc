@@ -78,6 +78,6 @@ picom -b
 
 
 xset s off -dpms
-
+xsetroot -cursor_name left_ptr
 exec i3
 #exec openbox-session

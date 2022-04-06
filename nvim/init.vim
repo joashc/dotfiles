@@ -147,8 +147,17 @@ set tabstop=2
 filetype plugin on
 set completeopt=longest,menuone,preview
 
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0

@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "coc-explorer": ">=0.22.8",
+    "coc-go": ">=1.1.0",
+    "coc-julia": ">=0.12.1",
+    "coc-kotlin": ">=0.0.7",
+    "coc-omnisharp": ">=0.0.28",
+    "coc-pyright": ">=1.1.185",
+    "coc-rls": ">=1.1.6",
+    "coc-rust-analyzer": ">=0.42.0",
+    "coc-snippets": ">=3.0.4",
+    "coc-solargraph": ">=1.2.0",
+    "coc-tsserver": ">=1.6.7",
+    "coc-yaml": ">=1.4.2"
+  }
+}

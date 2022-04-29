@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "coc-explorer": ">=0.22.8",
     "coc-go": ">=1.1.0",
     "coc-julia": ">=0.12.1",
     "coc-kotlin": ">=0.0.7",

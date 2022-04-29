@@ -12,6 +12,17 @@ set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
 function fish_mode_prompt; end
 
+function h
+  cd ~
+end
+
+function cdw
+  if test -d $LAST_WORKING_DIR
+      cd $LAST_WORKING_DIR
+  end
+end
+
+
 function bak
   pass show -c (cat ~/.bksp)
   read
@@ -49,7 +60,9 @@ set -gx OMF_PATH "/home/boo/.local/share/omf"
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
-abbr bds bluetoothctl -- connect 08:BF:A0:B2:26:1E
+function bds 
+  ~/dotfiles/bds.sh
+end
 
 abbr k kubectl
 abbr td topydo
@@ -97,6 +110,22 @@ end
 function lt
   ls -ltrh
 end
+
+function entr_ramda
+  set -l fn $argv[1]
+  set -l json_path (echo $argv[2])
+
+  echo "identity" > $fn
+  echo $fn
+  echo $fn | entr -cr /home/boo/dotfiles/ram.sh $fn $json_path
+end
+
+function rd
+  set -l fn "/home/boo/.ramda/"(echo $argv[1])"-"(openssl rand -hex 6) 
+  kitty -1 -e vim $fn ; entr_ramda $fn $argv[1]
+end
+
+
 
 function f
   find . -iname $argv
@@ -418,4 +447,3 @@ function work
   sh -c 'xrandr --output DP1 --mode 3840x2160R --rate 59.97 --output eDP1 --mode 3840x2160 --rate 60.00 --right-of DP1'
   feh /home/boo/.walls/new2.png --bg-fill
 end
-

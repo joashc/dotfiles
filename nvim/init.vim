@@ -12,6 +12,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'djoshea/vim-autoread'
 Plug 'coyotebush/vim-pweave'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'hashivim/vim-terraform'
 Plug 'mfussenegger/nvim-dap'
@@ -47,14 +49,71 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons' 
 call plug#end()
 "
 " Bind easymotion to single leaderkey
 let mapleader=" "
 map <Leader><Leader> <Plug>(easymotion-prefix)
 
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+  },
+}
+EOF
+
+lua << EOF
+require'nvim-tree'.setup{
+  open_on_setup = false,
+  open_on_setup_file = false,
+  open_on_tab = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = false,
+    ignore_list = {},
+  },
+  git = {
+    enable = false
+  }
+}
+EOF
+let g:nvim_tree_icons = {
+    \ 'default': "",
+    \ 'symlink': "",
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
 " bind save to control s
 
 :nmap <silent> <c-s-k> :wincmd k<CR>
@@ -116,12 +175,12 @@ endfunction
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-nnoremap <silent> <C-n> :<C-u>call ToggleErrors()<CR>
+"nnoremap <silent> <C-n> :<C-u>call ToggleErrors()<CR>
 
 inoremap <silent><expr> <c-.> coc#refresh()
 
 " Delete in normal mode to switch off highlighting till next search
-nnoremap <silent> <BS> :nohlsearch <cr>
+nnoremap <silent> <s-BS> :nohlsearch <cr>
 
 nnoremap <silent> ,j :%!jq '.'<CR>:set syntax=json<CR>
 
@@ -181,7 +240,8 @@ set wildmode=longest,list,full
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
 
 " Toggle explorer
-nnoremap <C-e> :CocCommand explorer --no-focus --sources buffer+,file+<CR>
+nnoremap <C-q> :NvimTreeFocus<CR>
+nnoremap <C-s-q> :NvimTreeToggle<CR>
 set cmdheight=1
 
 set noshowmode
@@ -218,6 +278,9 @@ let g:rustfmt_autosave = 1
 set number relativenumber
 set nu rnu
 
+set undofile
+set undodir=~/.undo
+
 
 let g:syntastic_always_populate_loc_list = 1
 
@@ -246,4 +309,3 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-

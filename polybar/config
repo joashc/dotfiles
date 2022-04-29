@@ -132,7 +132,7 @@ tray-detached = false
 tray-maxsize = 14
 tray-transparent = true
 tray-offset-x = 0
-tray-offset-y = -4
+tray-offset-y = -3
 ;tray-padding = 0
 tray-scale = 1.0
 
@@ -205,7 +205,7 @@ bar-empty-foreground = #44
 type = internal/date
 date = %a %b %d %I:%M
 label-foreground = ${colors.foreground}
-label-font=3
+label-font=1
 
 [module/cpu]
 type = internal/cpu

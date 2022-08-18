@@ -16,7 +16,6 @@ exec_always --no-startup-id feh ~/Downloads/wall.jpg --bg-fill
 exec_always --no-startup-id xsetroot -cursor_name left_ptr
 
 exec --no-startup-id unclutter -grab
-exec --no-startup-id xscreensaver --no-splash
 exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id xcape

@@ -71,8 +71,11 @@ sh -c 'xrandr --output HDMI-0 --mode 3840x2160 --rate 59.97'
 # make CapsLock behave like Ctrl:
 #setxkbmap -option caps:escape
 xmodmap /home/boo/.xmodmap
+xbindkeys -f /home/boo/.xbindkeysrc
 xcape -e 'Mode_switch=Escape'
 picom -b
+/home/boo/dotfiles/noprimaryclip.sh &
+
 
 #xinput --set-prop $(xinput | ag Touchpad | awk '{print $6}' | sed 's/id=//g' | bc) 'libinput Accel Speed' 0.6
 

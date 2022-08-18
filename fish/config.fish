@@ -10,6 +10,11 @@ set -gx PATH /home/boo/go/gopath/bin $PATH
 set -gx PATH /opt/google-cloud-sdk/bin $PATH
 set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
+function yup
+  yay -w --news
+  yay
+end
+
 function fish_mode_prompt; end
 
 function h
@@ -41,6 +46,10 @@ function cw
   git push
 end
 
+abbr v vim
+abbr ls exa --icons
+abbr lsl exa --long --grid --icons
+abbr lst exa --long --tree --icons --git-ignore
 abbr dec sh ~/dec.sh
 abbr r ranger
 abbr gs git show
@@ -89,8 +98,6 @@ function quiet
 end
 
 function bal
-  sudo smbios-thermal-ctl -g | ag "Current Thermal Modes" -A1 | tail -n 1
-  sudo smbios-thermal-ctl --set-thermal-mode=balanced
   sudo cpupower frequency-set -g ondemand
 end
 
@@ -117,12 +124,12 @@ function entr_ramda
 
   echo "identity" > $fn
   echo $fn
-  echo $fn | entr -cr /home/boo/dotfiles/ram.sh $fn $json_path
+  echo $fn | entr -crn /home/boo/dotfiles/ram.sh $fn $json_path
 end
 
 function rd
   set -l fn "/home/boo/.ramda/"(echo $argv[1])"-"(openssl rand -hex 6) 
-  kitty -1 -e vim $fn ; entr_ramda $fn $argv[1]
+  kitty -1 -e vim $fn; entr_ramda $fn $argv[1] 
 end
 
 
@@ -202,7 +209,7 @@ end
 
 function chpwd --on-variable PWD
   status --is-command-substitution; and return
-  ls
+  exa --icons
 end
 
 function wake

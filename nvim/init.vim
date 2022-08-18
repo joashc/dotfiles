@@ -2,7 +2,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 set mouse=a
 set hidden
+Plug 'rafaqz/ranger.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'vimwiki/vimwiki'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'milkypostman/vim-togglelist'
@@ -20,14 +22,12 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
-Plug 'vim-syntastic/syntastic'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'tomasiser/vim-code-dark'
 Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'previm/previm', { 'for': 'markdown' }
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -49,8 +49,6 @@ Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'https://github.com/Lokaltog/vim-easymotion'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons' 
 call plug#end()
 "
 " Bind easymotion to single leaderkey
@@ -85,36 +83,6 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-lua << EOF
-require'nvim-tree'.setup{
-  open_on_setup = false,
-  open_on_setup_file = false,
-  open_on_tab = true,
-  update_focused_file = {
-    enable = true,
-    update_cwd = false,
-    ignore_list = {},
-  },
-  git = {
-    enable = false
-  }
-}
-EOF
-let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-" bind save to control s
 
 :nmap <silent> <c-s-k> :wincmd k<CR>
 :nmap <silent> <c-s-j> :wincmd j<CR>
@@ -309,3 +277,13 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
+map <leader>rr :RangerEdit<cr>
+map <leader>rv :RangerVSplit<cr>
+map <leader>rs :RangerSplit<cr>
+map <leader>rt :RangerTab<cr>
+map <leader>ri :RangerInsert<cr>
+map <leader>ra :RangerAppend<cr>
+map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+map <leader>rd :RangerCD<cr>
+map <leader>rld :RangerLCD<cr>

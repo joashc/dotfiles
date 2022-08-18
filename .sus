@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 
 initial_idle=$(xprintidle | bc)
 
@@ -6,9 +6,18 @@ echo "Initial idle:"
 echo "$initial_idle"
 
   # Dim the screen if there's been no X activity for more than 2 minutes and there's no sound playing
-  if [ "$initial_idle" -gt 300000 ] && [ $(grep -r "RUNNING" /proc/asound | wc -l | bc) -eq 0 ]; then
+  if [ "$initial_idle" -gt 120000 ] && [ "$(grep -r "RUNNING" /proc/asound | wc -l | bc)" -eq 0 ]; then
     echo "Dimming screen"
-    xcalib -co 60 -a
+    for _ in {1..20}
+    do
+      idle=$(xprintidle | bc)
+      if [ "$idle" -lt 2000 ]
+      then
+        break
+      fi
+      sleep 0.01
+      xcalib -co 97 -a
+    done
 
     idle=$(xprintidle | bc)
     # Keep looping if we're still idle
@@ -17,7 +26,7 @@ echo "$initial_idle"
       idle=$(xprintidle | bc)
 
       # Suspend 20 seconds after screen dims
-      if [ "$idle" -gt $(($initial_idle + 20000)) ];
+      if [ "$idle" -gt $((initial_idle + 20000)) ];
       then
         echo "Suspending"
         sudo systemctl suspend

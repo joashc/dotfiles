@@ -158,6 +158,7 @@ abbr am 'git commit -am'
 abbr A 'git add -A'
 abbr f 'fd --type f'
 abbr fzc 'git lg | fzf | cut -d " " -f 2 | xclip -selection clipboard'
+abbr gdh 'git diff HEAD~1'
 function rs
   git reset $argv
 end

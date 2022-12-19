@@ -78,10 +78,28 @@
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
    XF86AudioMicMute
 
+"~/home/hascripts/study_light_toggle.sh"
+   m:0x0 + c:142
+   XF86Open
+
+"~/home/hascripts/study_light_max.sh"
+   Alt + XF86Open
+
+"~/home/hascripts/study_light_inc.sh"
+   Alt + F2
+
+"~/home/hascripts/study_light_dec.sh"
+   Alt + F1
+
 # printscreen
 "maim -s | xclip -selection clipboard -t image/png"
     m:0x0 + c:107
     Print
+
+# toggle lights
+"/home/boo/home/hascripts/study_light_on.sh"
+    m:0x0 + c:142
+    XF86Open
 
 #recalib
 "clight -c"
